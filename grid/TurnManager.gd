@@ -1,5 +1,6 @@
 extends Node
 class_name TurnManager
+# ye script chatgpt-ed hai pura , but may be you get the idea.
 
 enum Phase { START, ACTION, RESOLVE, END }
 
