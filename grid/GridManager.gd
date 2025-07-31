@@ -1,7 +1,7 @@
 extends Node
 
-@export var chunk_size: Vector2i = Vector2i(16, 16)
-@export var cell_world_size: Vector2 = Vector2(64, 64)  # for view snapping
+@export var chunk_size: Vector2i = Vector2i(8, 8)
+@export var cell_world_size: Vector2 = Vector2(32, 32)  # for view snapping
 
 # chunk key -> (cell key -> CellData)
 var chunks: Dictionary = {}
