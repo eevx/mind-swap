@@ -1,4 +1,5 @@
-extends Node
+extends Action
+class_name DestroyAction
 
 var data : GameObjectData
 var pos : Vector2i
@@ -17,6 +18,7 @@ func update_visual(show_value: bool):
 		data.ref_to_node.visible = show_value
 
 func debug_action():
+	#TODO
 	return ["destroy_action", data.ref_to_node, pos]
 
 func undo():

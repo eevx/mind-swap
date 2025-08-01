@@ -18,6 +18,11 @@ func _ready():
 		print(character_data.turn_order)
 
 func _process(_delta):
+	if Input.is_action_just_pressed("left_click"):
+		var pos = world_to_grid(get_tree().current_scene.get_global_mouse_position())
+		print(get_cell_data(pos).cell_type.find_key(get_cell_data(pos).get_type()))
+		if get_cell_data(pos).get_occupant():
+			print(get_cell_data(pos).get_occupant().ref_to_node)
 	if Input.is_action_just_pressed("ui_right"):
 		TurnManager.start_new_turn()
 		TurnManager.advance_turn()
@@ -113,19 +118,26 @@ func place_object(grid_pos: Vector2i, obj_data: GameObjectData) -> void:
 	object_positions[obj_data] = grid_pos
 	object_placed.emit(grid_pos, obj_data)
 
-
 func remove_object_world(world_pos: Vector2) -> void:
 	var grid_pos = world_to_grid(world_pos)
 	remove_object(grid_pos)
 
-func remove_object(grid_pos: Vector2i) -> void:
+func remove_object(grid_pos: Vector2i, expected_obj: GameObjectData = null) -> void:
 	var cell = get_cell_data(grid_pos, false)
 	if not cell:
 		return
 	var obj = cell.get_occupant()
+	if not obj:
+		return
+	
+	if expected_obj and obj != expected_obj:
+		# Do not remove the wrong object
+		return
+
 	cell.remove_occupant()
 	object_positions.erase(obj)
 	object_removed.emit(grid_pos, obj)
+
 
 func get_object_grid_pos(object_data : GameObjectData):
 	if object_positions.has(object_data):

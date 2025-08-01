@@ -22,8 +22,9 @@ func execute():
 
 func update_visual(pos):
 	if character_data.ref_to_node:
+		#TODO
 		pass
 
 func undo():
-	character_data.current_dir = to_dir
+	character_data.current_dir = from_dir
 	update_visual(from_dir)

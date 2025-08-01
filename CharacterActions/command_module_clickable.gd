@@ -11,6 +11,8 @@ func _ready():
 	_init_pos = position
 
 func update_visual(type : int):
+	#TODO
+	$Label.text = CharacterObjectData.command_type.find_key(type)
 	pass
 
 func _process(_delta):
@@ -26,8 +28,12 @@ func _unhandled_input(event):
 				pass
 			else:
 				var temp_command_type = owner_data.command_array[index_in_array]
-				owner_data.swap_command(swap_attempt.owner_data.command_array[swap_attempt.index_in_array], index_in_array)
-				swap_attempt.owner_data.swap_command(temp_command_type, swap_attempt.index_in_array)
+				#owner_data.swap_command(swap_attempt.owner_data.command_array[swap_attempt.index_in_array], index_in_array)
+				#swap_attempt.owner_data.swap_command(temp_command_type, swap_attempt.index_in_array)
+				var swap_action_1 : Action = SwapAction.new(owner_data, swap_attempt.owner_data.command_array[swap_attempt.index_in_array], index_in_array)
+				var swap_action_2 : Action = SwapAction.new(swap_attempt.owner_data, temp_command_type, swap_attempt.index_in_array)
+				TurnManager.execute_action(swap_action_1)
+				TurnManager.execute_action(swap_action_2)
 	reset()
 
 func reset():

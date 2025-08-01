@@ -7,8 +7,6 @@ var type : cell_type = cell_type.DANGER
 var occupant : GameObjectData = null
 
 func set_type(t: cell_type):
-	if not t:
-		return
 	type = t
 
 func get_type():
