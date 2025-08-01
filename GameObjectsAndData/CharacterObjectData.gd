@@ -24,4 +24,5 @@ func run_command(command: command_type) -> Action:
 			pass
 	if action:
 		action.execute()
+		UndoManager.push_action(action)
 	return action

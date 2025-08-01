@@ -30,4 +30,9 @@ func update_visual(pos):
 		character_data.ref_to_node.global_position = GridManager.grid_to_world(pos)
 
 func undo():
-	pass
+	# Remove from the destination cell (where it was moved to)
+	GridManager.remove_object(to_pos)
+	# Place back into the original cell
+	GridManager.place_object(from_pos, character_data)
+	# Update visuals to reflect the rollback
+	update_visual(from_pos)

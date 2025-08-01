@@ -21,3 +21,7 @@ func register_tiles():
 			var world_pos =to_global(map_to_local(tile_pos))
 			var cell = GridManager.get_cell_data_world(world_pos)
 			cell.set_type(cell_type)
+
+
+func _on_undo_button_down() -> void:
+	UndoManager.undo()
