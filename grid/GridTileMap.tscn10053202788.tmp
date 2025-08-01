@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://nvfa0p75xuke"]
+
+[ext_resource type="Script" uid="uid://v3y2sfnqtxod" path="res://grid/grid_tile_map.gd" id="1_hy4gc"]
+[ext_resource type="TileSet" uid="uid://80ayispxf8f5" path="res://Resource/tilemap_test.tres" id="1_ih180"]
+
+[node name="GridTileMap" type="TileMapLayer"]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0, 255, 255, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0, 1, 0, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+tile_set = ExtResource("1_ih180")
+script = ExtResource("1_hy4gc")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)

@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://nvfa0p75xuke"]
+
+[ext_resource type="TileSet" uid="uid://80ayispxf8f5" path="res://Resource/tilemap_test.tres" id="1_aboob"]
+[ext_resource type="Script" uid="uid://v3y2sfnqtxod" path="res://grid/grid_tile_map.gd" id="2_8mqe2"]
+[ext_resource type="PackedScene" uid="uid://cyy3whjrf3trl" path="res://LevelComponents/base_enemy.tscn" id="3_ddvwn"]
+[ext_resource type="Script" uid="uid://bah1h38kcvyvw" path="res://GameObjectsAndData/CharacterObjectData.gd" id="4_e0g1c"]
+
+[sub_resource type="Resource" id="Resource_op7kn"]
+script = ExtResource("4_e0g1c")
+command_array = Array[int]([1, 0])
+turn_order = 1
+metadata/_custom_type_script = "uid://bah1h38kcvyvw"
+
+[sub_resource type="Resource" id="Resource_gampi"]
+script = ExtResource("4_e0g1c")
+command_array = Array[int]([2, 0])
+turn_order = 2
+metadata/_custom_type_script = "uid://bah1h38kcvyvw"
+
+[sub_resource type="Resource" id="Resource_74d3g"]
+script = ExtResource("4_e0g1c")
+command_array = Array[int]([0])
+turn_order = 3
+metadata/_custom_type_script = "uid://bah1h38kcvyvw"
+
+[sub_resource type="Resource" id="Resource_2gpjh"]
+script = ExtResource("4_e0g1c")
+command_array = Array[int]([0])
+metadata/_custom_type_script = "uid://bah1h38kcvyvw"
+
+[node name="GridTileMap" type="TileMapLayer"]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0, 255, 255, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0, 1, 0, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+tile_set = ExtResource("1_aboob")
+script = ExtResource("2_8mqe2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
+
+[node name="BaseEnemy" parent="." instance=ExtResource("3_ddvwn")]
+position = Vector2(-48, 48)
+EnemyData = SubResource("Resource_op7kn")
+
+[node name="BaseEnemy3" parent="." instance=ExtResource("3_ddvwn")]
+position = Vector2(80, 16)
+EnemyData = SubResource("Resource_gampi")
+
+[node name="BaseEnemy2" parent="." instance=ExtResource("3_ddvwn")]
+position = Vector2(16, -48)
+EnemyData = SubResource("Resource_74d3g")
+
+[node name="BaseEnemy4" parent="." instance=ExtResource("3_ddvwn")]
+position = Vector2(-16, -16)
+EnemyData = SubResource("Resource_2gpjh")

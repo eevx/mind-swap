@@ -16,4 +16,6 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GridManager="*res://grid/GridManager.gd"
+GlobalVariables="*res://Globals/GlobalVariables.gd"
+GridManager="*res://Globals/GridManager.gd"
+TurnManager="*res://Globals/TurnManager.gd"

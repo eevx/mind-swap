@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyy3whjrf3trl"]
+
+[ext_resource type="Script" uid="uid://brgr438jmb18x" path="res://GameObjectsAndData/BaseEnemy.gd" id="1_2lwar"]
+[ext_resource type="Script" uid="uid://bah1h38kcvyvw" path="res://GameObjectsAndData/CharacterObjectData.gd" id="3_ocg4g"]
+[ext_resource type="Texture2D" uid="uid://bwtskbtto7j0" path="res://Assets/tile_map_test.png" id="4_4iafv"]
+
+[sub_resource type="Resource" id="Resource_f7tjn"]
+script = ExtResource("3_ocg4g")
+command_array = Array[int]([0])
+metadata/_custom_type_script = "uid://bah1h38kcvyvw"
+
+[node name="BaseEnemy" type="Node2D"]
+script = ExtResource("1_2lwar")
+EnemyData = SubResource("Resource_f7tjn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4_4iafv")
+region_enabled = true
+region_rect = Rect2(0, 32, 32, 32)

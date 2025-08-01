@@ -1,0 +1,2 @@
+extends GameObjectData
+class_name MoveableObject
