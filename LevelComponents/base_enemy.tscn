@@ -6,7 +6,6 @@
 
 [sub_resource type="Resource" id="Resource_f7tjn"]
 script = ExtResource("3_ocg4g")
-command_array = Array[int]([0])
 metadata/_custom_type_script = "uid://bah1h38kcvyvw"
 
 [node name="BaseEnemy" type="Node2D"]

@@ -18,9 +18,17 @@ func _ready():
 		print(character_data.turn_order)
 
 func _process(_delta):
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_right"):
 		TurnManager.start_new_turn()
 		TurnManager.advance_turn()
+	if Input.is_action_just_pressed("ui_left"):
+		ActionHistory.undo_last_action()
+	if Input.is_action_just_pressed("ui_down"):
+		for c in get_sorted_characters():
+			var visualizer_scene = preload("res://CharacterActions/command_visualizer.tscn").instantiate()
+			visualizer_scene.ref_to_data = c
+			get_tree().root.add_child(visualizer_scene)
+			visualizer_scene.global_position = grid_to_world(get_object_grid_pos(c)) + Vector2.UP * 10
 
 # Helpers
 func debug_print_all_cells() -> void:
@@ -120,7 +128,10 @@ func remove_object(grid_pos: Vector2i) -> void:
 	object_removed.emit(grid_pos, obj)
 
 func get_object_grid_pos(object_data : GameObjectData):
-	return object_positions[object_data]
+	if object_positions.has(object_data):
+		return object_positions[object_data]
+	else:
+		return null
 
 # Returns a list of dictionaries: {pos: Vector2i, cell: CellData}
 func iterate_region(min_pos: Vector2i, max_pos: Vector2i) -> Array: 
