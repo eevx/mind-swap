@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=4 uid="uid://j6kigcxay7pg"]
+
+[ext_resource type="PackedScene" uid="uid://bdao5x87efl8" path="res://LevelComponents/level_manager.tscn" id="1_ia1b7"]
+[ext_resource type="PackedScene" uid="uid://nvfa0p75xuke" path="res://LevelComponents/GridTileMap.tscn" id="2_qtx5y"]
+[ext_resource type="PackedScene" uid="uid://cyy3whjrf3trl" path="res://LevelComponents/base_enemy.tscn" id="3_5o1ql"]
+[ext_resource type="Script" uid="uid://bah1h38kcvyvw" path="res://GameObjectsAndData/CharacterObjectData.gd" id="4_0jxxk"]
+
+[sub_resource type="Resource" id="Resource_tqunc"]
+script = ExtResource("4_0jxxk")
+command_array = Array[int]([0, 0, 2])
+current_dir = Vector2i(0, 1)
+metadata/_custom_type_script = "uid://bah1h38kcvyvw"
+
+[node name="level_s1" type="Node2D"]
+y_sort_enabled = true
+
+[node name="LevelManager" parent="." instance=ExtResource("1_ia1b7")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
+
+[node name="GridTileMap" parent="." instance=ExtResource("2_qtx5y")]
+tile_map_data = PackedByteArray("AAD+////AAADAAAAAAD+/wAAAAADAAAAAAD+/wEAAAADAAAAAAD9/wIAAAACAAAAAAD+/wIAAAACAAAAAAD//wIAAAACAAAAAAAAAAIAAAACAAAAAAABAAIAAAACAAAAAAACAAIAAAACAAAAAAACAP7/AAACAAAAAAACAP3/AAACAAAAAAABAP3/AAACAAAAAAAAAP3/AAACAAAAAAD///3/AAACAAAAAAD+//3/AAACAAAAAAD9//3/AAACAAAAAAD9//7/AAACAAAAAAD9////AAACAAAAAAD9/wAAAAACAAAAAAACAAAAAAACAAAAAAACAP//AAACAAAAAAD//wEAAAADAAAAAAD//wAAAAADAAAAAAAAAAAAAAADAAAAAAABAAAAAAADAAAAAAABAP//AAADAAAAAAAAAP//AAADAAAAAAD/////AAADAAAAAAD+//7/AAADAAAAAAD///7/AAADAAAAAAAAAP7/AAADAAAAAAABAP7/AAADAAAAAAAAAAEAAAADAAAAAAABAAEAAAAAAAAAAAACAAEAAAACAAAAAAD9/wEAAAACAAAAAAA=")
+
+[node name="BaseEnemy" parent="." instance=ExtResource("3_5o1ql")]
+position = Vector2(-48, 48)
+EnemyData = SubResource("Resource_tqunc")
