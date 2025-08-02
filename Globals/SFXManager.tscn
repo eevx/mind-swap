@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://dayud51rwvpbv"]
+
+[ext_resource type="Script" uid="uid://5us4bvu66fxc" path="res://Globals/sfx_manager.gd" id="1_6nkip"]
+[ext_resource type="AudioStream" uid="uid://dlkcmov03gvep" path="res://Assets/Sfx/gridMove.wav" id="2_swsjg"]
+[ext_resource type="PackedScene" uid="uid://mbalnq7u8nsb" path="res://Assets/Sfx/audio_player_oneshot.tscn" id="2_xbvlc"]
+[ext_resource type="AudioStream" uid="uid://jnymbkjxie8d" path="res://Assets/Sfx/failedSomethingorCantMove.wav" id="3_swsjg"]
+
+[node name="SfxManager" type="Node2D"]
+script = ExtResource("1_6nkip")
+sfx_dict = Dictionary[String, AudioStream]({
+"push": ExtResource("2_swsjg"),
+"push2": ExtResource("3_swsjg")
+})
+audio_player = ExtResource("2_xbvlc")

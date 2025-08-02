@@ -21,6 +21,7 @@ GlobalVariables="*res://Globals/GlobalVariables.gd"
 GridManager="*res://Globals/GridManager.gd"
 TurnManager="*res://Globals/TurnManager.gd"
 ActionHistory="*res://Globals/ActionHistory.gd"
+SfxManager="*res://Globals/SFXManager.tscn"
 
 [input]
 

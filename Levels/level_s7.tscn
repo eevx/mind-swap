@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=4 uid="uid://cht08jpd6erkb"]
+
+[ext_resource type="PackedScene" uid="uid://bdao5x87efl8" path="res://LevelComponents/level_manager.tscn" id="1_ir86u"]
+[ext_resource type="PackedScene" uid="uid://nvfa0p75xuke" path="res://LevelComponents/GridTileMap.tscn" id="2_f3hd7"]
+[ext_resource type="PackedScene" uid="uid://cyy3whjrf3trl" path="res://LevelComponents/base_enemy.tscn" id="3_dxyn5"]
+[ext_resource type="Script" uid="uid://bah1h38kcvyvw" path="res://GameObjectsAndData/CharacterObjectData.gd" id="4_f7deh"]
+[ext_resource type="PackedScene" uid="uid://dvpa68x3mel0d" path="res://LevelComponents/moveable_box.tscn" id="5_f3hd7"]
+
+[sub_resource type="Resource" id="Resource_ir86u"]
+script = ExtResource("4_f7deh")
+command_array = Array[int]([1, 0])
+metadata/_custom_type_script = "uid://bah1h38kcvyvw"
+
+[sub_resource type="Resource" id="Resource_f3hd7"]
+script = ExtResource("4_f7deh")
+command_array = Array[int]([3, 0, 0])
+current_dir = Vector2i(-1, 0)
+turn_order = 1
+metadata/_custom_type_script = "uid://bah1h38kcvyvw"
+
+[node name="level_s7" type="Node2D"]
+y_sort_enabled = true
+
+[node name="LevelManager" parent="." instance=ExtResource("1_ir86u")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
+
+[node name="GridTileMap" parent="." instance=ExtResource("2_f3hd7")]
+tile_map_data = PackedByteArray("AAD9/wIAAAACAAAAAAACAP3/AAACAAAAAAD///3/AAACAAAAAAD+//3/AAACAAAAAAD9//3/AAACAAAAAAAAAP3/AAACAAAAAAACAAIAAAACAAAAAAABAAIAAAACAAAAAAD+/wIAAAACAAAAAAAAAAIAAAACAAAAAAD///7/AAADAAAAAAACAP7/AAACAAAAAAD//wIAAAACAAAAAAAAAAAAAAACAAAAAAD//wAAAAACAAAAAAABAP3/AAACAAAAAAD+/wEAAAADAAAAAAD//wEAAAADAAAAAAAAAAEAAAADAAAAAAABAAEAAAADAAAAAAABAP//AAADAAAAAAABAP7/AAADAAAAAAAAAP//AAACAAAAAAD+////AAADAAAAAAD+//7/AAADAAAAAAACAAEAAAACAAAAAAACAP//AAACAAAAAAD8//3/AAACAAAAAAD7//3/AAACAAAAAAD8//7/AAADAAAAAAD9//7/AAADAAAAAAD9/wEAAAADAAAAAAD8/wIAAAACAAAAAAD7/wIAAAACAAAAAAD8////AAADAAAAAAD8/wAAAAACAAAAAAACAAAAAAACAAAAAAD7//7/AAACAAAAAAD7////AAACAAAAAAD7/wAAAAACAAAAAAD7/wEAAAACAAAAAAABAAAAAAADAAAAAAD/////AAADAAAAAAD8/wEAAAAAAAAAAAAAAP7/AAACAAAAAAD9////AAADAAAAAAD9/wAAAAACAAAAAAD+/wAAAAADAAAAAAA=")
+
+[node name="BaseEnemy" parent="." instance=ExtResource("3_dxyn5")]
+position = Vector2(48, -48)
+EnemyData = SubResource("Resource_ir86u")
+
+[node name="BaseEnemy2" parent="." instance=ExtResource("3_dxyn5")]
+position = Vector2(16, 48)
+EnemyData = SubResource("Resource_f3hd7")
+
+[node name="MoveableBox" parent="." instance=ExtResource("5_f3hd7")]
+position = Vector2(48, 16)

@@ -7,21 +7,21 @@
 
 [sub_resource type="Resource" id="Resource_tqunc"]
 script = ExtResource("4_caant")
-command_array = Array[int]([0, 2])
+command_array = Array[int]([0, 0])
 current_dir = Vector2i(0, -1)
 metadata/_custom_type_script = "uid://bah1h38kcvyvw"
 
 [sub_resource type="Resource" id="Resource_yev13"]
 script = ExtResource("4_caant")
 command_array = Array[int]([0, 2])
+current_dir = Vector2i(0, -1)
 turn_order = 1
 metadata/_custom_type_script = "uid://bah1h38kcvyvw"
 
-[node name="level_s2" type="Node2D"]
+[node name="level_s3" type="Node2D"]
 y_sort_enabled = true
 
 [node name="LevelManager" parent="." instance=ExtResource("1_yev13")]
-visible = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)

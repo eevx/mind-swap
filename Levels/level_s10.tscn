@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=4 uid="uid://cgwtu56h6pp0x"]
+
+[ext_resource type="PackedScene" uid="uid://bdao5x87efl8" path="res://LevelComponents/level_manager.tscn" id="1_tghef"]
+[ext_resource type="PackedScene" uid="uid://nvfa0p75xuke" path="res://LevelComponents/GridTileMap.tscn" id="2_fo1a2"]
+[ext_resource type="PackedScene" uid="uid://cyy3whjrf3trl" path="res://LevelComponents/base_enemy.tscn" id="3_p3tpq"]
+[ext_resource type="Script" uid="uid://bah1h38kcvyvw" path="res://GameObjectsAndData/CharacterObjectData.gd" id="4_k1j70"]
+[ext_resource type="PackedScene" uid="uid://dvpa68x3mel0d" path="res://LevelComponents/moveable_box.tscn" id="5_13b1w"]
+
+[sub_resource type="Resource" id="Resource_5mg6d"]
+script = ExtResource("4_k1j70")
+command_array = Array[int]([1, 0])
+metadata/_custom_type_script = "uid://bah1h38kcvyvw"
+
+[sub_resource type="Resource" id="Resource_x7lrx"]
+script = ExtResource("4_k1j70")
+command_array = Array[int]([3, 0, 0])
+current_dir = Vector2i(-1, 0)
+turn_order = 1
+metadata/_custom_type_script = "uid://bah1h38kcvyvw"
+
+[node name="level_s10" type="Node2D"]
+y_sort_enabled = true
+
+[node name="LevelManager" parent="." instance=ExtResource("1_tghef")]
+visible = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
+
+[node name="GridTileMap" parent="." instance=ExtResource("2_fo1a2")]
+tile_map_data = PackedByteArray("AAACAP3/AAADAAAAAAD///3/AAADAAAAAAD+//3/AAADAAAAAAD9//3/AAADAAAAAAAAAP3/AAADAAAAAAD+/wIAAAADAAAAAAAAAAIAAAADAAAAAAD//wIAAAADAAAAAAABAP3/AAADAAAAAAD+/wEAAAADAAAAAAABAP//AAACAAAAAAD8//3/AAADAAAAAAD8/wIAAAADAAAAAAABAAAAAAACAAAAAAD/////AAAAAAAAAAD8/wEAAAADAAAAAAD8/wAAAAADAAAAAAD8////AAADAAAAAAD8//7/AAADAAAAAAD8/wMAAAACAAAAAAD9/wMAAAACAAAAAAD+/wMAAAACAAAAAAD//wMAAAACAAAAAAAAAAMAAAACAAAAAAABAAMAAAACAAAAAAACAAMAAAACAAAAAAADAAMAAAACAAAAAAADAAIAAAACAAAAAAADAAEAAAACAAAAAAADAAAAAAACAAAAAAADAP//AAACAAAAAAADAP7/AAACAAAAAAADAP3/AAACAAAAAAADAPz/AAACAAAAAAACAPz/AAACAAAAAAABAPz/AAACAAAAAAAAAPz/AAACAAAAAAD///z/AAACAAAAAAD+//z/AAACAAAAAAD9//z/AAACAAAAAAD8//z/AAACAAAAAAD7//z/AAACAAAAAAD7//3/AAACAAAAAAD7//7/AAACAAAAAAD7////AAACAAAAAAD7/wAAAAACAAAAAAD7/wEAAAACAAAAAAD7/wIAAAACAAAAAAD7/wMAAAACAAAAAAD+////AAADAAAAAAD+/wAAAAADAAAAAAACAAAAAAADAAAAAAACAP//AAADAAAAAAACAP7/AAADAAAAAAABAP7/AAACAAAAAAACAAEAAAADAAAAAAABAAEAAAACAAAAAAABAAIAAAADAAAAAAACAAIAAAADAAAAAAD//wAAAAADAAAAAAD9/wIAAAADAAAAAAD9/wEAAAACAAAAAAD9//7/AAACAAAAAAD9////AAACAAAAAAD9/wAAAAACAAAAAAD+//7/AAACAAAAAAD///7/AAADAAAAAAD//wEAAAADAAAAAAAAAAEAAAACAAAAAAAAAAAAAAADAAAAAAAAAP//AAADAAAAAAAAAP7/AAADAAAAAAA=")
+
+[node name="BaseEnemy" parent="." instance=ExtResource("3_p3tpq")]
+position = Vector2(80, -80)
+EnemyData = SubResource("Resource_5mg6d")
+
+[node name="BaseEnemy2" parent="." instance=ExtResource("3_p3tpq")]
+position = Vector2(-112, 80)
+EnemyData = SubResource("Resource_x7lrx")
+
+[node name="MoveableBox" parent="." instance=ExtResource("5_13b1w")]
+position = Vector2(-16, 48)
+
+[node name="MoveableBox2" parent="." instance=ExtResource("5_13b1w")]
+position = Vector2(16, -48)
+
+[node name="MoveableBox3" parent="." instance=ExtResource("5_13b1w")]
+position = Vector2(-48, 48)
+
+[node name="MoveableBox4" parent="." instance=ExtResource("5_13b1w")]
+position = Vector2(-16, -48)

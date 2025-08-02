@@ -48,6 +48,7 @@ func apply_cell_effect(pos):
 
 func update_visual(pos:Vector2i):
 	#TODO
+	SfxManager.play_sfx("push")
 	if character_data.ref_to_node:
 		character_data.ref_to_node.global_position = GridManager.grid_to_world(pos)
 
