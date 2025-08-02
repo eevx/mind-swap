@@ -1,12 +1,12 @@
 extends Action
 class_name DestroyAction
 
-var data : GameObjectData
+var object_data : GameObjectData
 var pos : Vector2i
 
-func _init(data: GameObjectData, pos: Vector2i):
-	self.data = data
-	self.pos = pos
+func _init(data: GameObjectData, p: Vector2i):
+	self.object_data = data
+	self.pos = p
 
 func execute(): 
 	GridManager.remove_object(pos)
@@ -14,13 +14,13 @@ func execute():
 	return true
 
 func update_visual(show_value: bool):
-	if data.ref_to_node:
-		data.ref_to_node.visible = show_value
+	if object_data.ref_to_node:
+		object_data.ref_to_node.visible = show_value
 
 func debug_action():
 	#TODO
-	return ["destroy_action", data.ref_to_node, pos]
+	return ["destroy_action", object_data.ref_to_node, pos]
 
 func undo():
-	GridManager.place_object(pos, data)
+	GridManager.place_object(pos, object_data)
 	update_visual(true)

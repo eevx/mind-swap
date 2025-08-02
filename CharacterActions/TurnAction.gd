@@ -20,9 +20,10 @@ func execute():
 	update_visual(to_dir)
 	return true
 
-func update_visual(pos):
+func update_visual(dir : Vector2i):
 	if character_data.ref_to_node:
 		#TODO
+		character_data.ref_to_node.rotation = Vector2(dir).angle() + PI/2
 		pass
 
 func undo():

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ehc2trx33bbv"]
+
+[ext_resource type="Script" uid="uid://dtwovh300laob" path="res://Levels/level_select_button.gd" id="1_xlus6"]
+
+[node name="1" type="Button"]
+theme_override_font_sizes/font_size = 26
+text = "LEVEL1"
+script = ExtResource("1_xlus6")
+level_scene_path = "res://level_test.tscn"
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]

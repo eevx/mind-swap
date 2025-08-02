@@ -4,8 +4,6 @@
 [ext_resource type="Script" uid="uid://v3y2sfnqtxod" path="res://grid/grid_tile_map.gd" id="2_8mqe2"]
 
 [node name="GridTileMap" type="TileMapLayer"]
+y_sort_enabled = true
 tile_set = ExtResource("1_aboob")
 script = ExtResource("2_8mqe2")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2.5, 2.5)

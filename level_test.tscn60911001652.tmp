@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=4 uid="uid://cjyexfiqa2k6q"]
 
-[ext_resource type="PackedScene" uid="uid://bdao5x87efl8" path="res://LevelComponents/level_manager.tscn" id="1_56xti"]
+[ext_resource type="Script" uid="uid://clwwctrxy1ikm" path="res://LevelComponents/LevelManager.gd" id="1_56xti"]
 [ext_resource type="PackedScene" uid="uid://nvfa0p75xuke" path="res://LevelComponents/GridTileMap.tscn" id="1_rdhbp"]
 [ext_resource type="PackedScene" uid="uid://cyy3whjrf3trl" path="res://LevelComponents/base_enemy.tscn" id="2_4xtnr"]
 [ext_resource type="Script" uid="uid://bah1h38kcvyvw" path="res://GameObjectsAndData/CharacterObjectData.gd" id="3_6ih1o"]
@@ -29,11 +29,7 @@ metadata/_custom_type_script = "uid://cwiq6ygoj05ox"
 
 [node name="level_test" type="Node2D"]
 y_sort_enabled = true
-
-[node name="LevelManager" parent="." instance=ExtResource("1_56xti")]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2.5, 2.5)
+script = ExtResource("1_56xti")
 
 [node name="GridTileMap" parent="." instance=ExtResource("1_rdhbp")]
 tile_map_data = PackedByteArray("AAD+//7/AAADAAAAAAD///7/AAADAAAAAAAAAP7/AAADAAAAAAAAAP//AAABAAAAAAABAP//AAADAAAAAAABAP7/AAADAAAAAAD+////AAADAAAAAAD/////AAABAAAAAAD+/wAAAAADAAAAAAD//wAAAAABAAAAAAAAAAAAAAABAAAAAAABAAAAAAADAAAAAAABAAEAAAADAAAAAAD//wEAAAADAAAAAAD+/wEAAAADAAAAAAD9/wIAAAACAAAAAAD+/wIAAAACAAAAAAD//wIAAAACAAAAAAAAAAIAAAACAAAAAAABAAIAAAACAAAAAAACAAIAAAACAAAAAAACAAAAAAACAAAAAAACAP//AAACAAAAAAACAP7/AAACAAAAAAACAP3/AAACAAAAAAABAP3/AAACAAAAAAAAAP3/AAACAAAAAAD///3/AAACAAAAAAD+//3/AAACAAAAAAD9//3/AAACAAAAAAD9//7/AAACAAAAAAD9////AAACAAAAAAD9/wAAAAACAAAAAAD9/wEAAAAAAAAAAAAAAAEAAAADAAAAAAACAAEAAAADAAAAAAADAAEAAAAAAAAAAAADAAAAAAACAAAAAAAEAAAAAAACAAAAAAAEAAEAAAACAAAAAAADAAIAAAACAAAAAAAEAAIAAAACAAAAAAA=")
@@ -53,3 +49,6 @@ object_data = SubResource("Resource_hpvma")
 [node name="MoveableBox2" parent="." instance=ExtResource("4_4xtnr")]
 position = Vector2(16, 48)
 object_data = SubResource("Resource_k6i1l")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)

@@ -5,15 +5,15 @@ var character_data: CharacterObjectData
 var pos : Vector2i
 
 ## initialize as character_data, from (vector2i), to (vector2i)
-func _init(data: CharacterObjectData, pos: Vector2i):
+func _init(data: CharacterObjectData, p: Vector2i):
 	self.character_data = data
-	self.pos = pos
+	self.pos = p
 
 func debug_action():
 	return ["shoot", character_data.ref_to_node, pos]
 
 func execute():
-	var extent := 15
+	var extent := 30
 	var final_pos : Vector2i
 	for i in range(extent):
 		var cell_pos : Vector2i = pos + character_data.current_dir * (1 + i)

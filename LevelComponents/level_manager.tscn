@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdao5x87efl8"]
+
+[ext_resource type="Script" uid="uid://clwwctrxy1ikm" path="res://LevelComponents/LevelManager.gd" id="1_yi4t7"]
+[ext_resource type="PackedScene" uid="uid://djptr1xif24sn" path="res://CharacterActions/command_visualizer.tscn" id="2_lnmxl"]
+
+[node name="LevelManager" type="CanvasLayer" node_paths=PackedStringArray("timer")]
+script = ExtResource("1_yi4t7")
+timer = NodePath("Timer")
+command_visualizer_scene = ExtResource("2_lnmxl")
+level_select_scene_path = "res://Levels/level_select.tscn"
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -136.0
+offset_right = 596.0
+offset_bottom = -39.755005
+grow_vertical = 0
+
+[node name="scrub_left" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+text = "scrub left"
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer"]
+custom_minimum_size = Vector2(28.725, 0)
+layout_mode = 2
+
+[node name="play_pause" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+text = "play/pause"
+
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer"]
+custom_minimum_size = Vector2(28.725, 0)
+layout_mode = 2
+
+[node name="scrub_right" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+text = "scrub right"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 48.0
+offset_top = 48.0
+offset_right = 112.0
+offset_bottom = 151.0
+
+[node name="Back" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+text = "Back"
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 19.605)
+layout_mode = 2
+
+[node name="Reload" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+text = "Reset"
+
+[connection signal="button_down" from="HBoxContainer/scrub_left" to="." method="_on_scrub_left_button_down"]
+[connection signal="button_down" from="HBoxContainer/play_pause" to="." method="_on_play_pause_button_down"]
+[connection signal="button_down" from="HBoxContainer/scrub_right" to="." method="_on_scrub_right_button_down"]
+[connection signal="button_down" from="VBoxContainer/Back" to="." method="_on_back_button_down"]
+[connection signal="button_down" from="VBoxContainer/Reload" to="." method="_on_reload_button_down"]

@@ -2,6 +2,9 @@ extends Node
 
 var undo_stack : Array[Array] = []
 
+func reset_stack():
+	undo_stack.clear()
+
 func start_new_log(character : CharacterObjectData = null):
 	undo_stack.push_back([])
 	if character:

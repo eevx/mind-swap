@@ -13,6 +13,8 @@ script = ExtResource("1_2lwar")
 EnemyData = SubResource("Resource_f7tjn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+scale = Vector2(1.5406533, 1.5406533)
 texture = ExtResource("4_4iafv")
 region_enabled = true
 region_rect = Rect2(0, 32, 32, 32)
