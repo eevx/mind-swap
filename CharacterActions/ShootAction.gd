@@ -31,7 +31,10 @@ func execute():
 	return true
 
 func update_visual(from: Vector2i, to : Vector2i):
-	#TODO
+	if character_data.ref_to_node:
+		if character_data.ref_to_node.has_method("queue_animation"):
+			character_data.ref_to_node.queue_animation("shoot", [from, to])
+
 	pass
 
 func undo():

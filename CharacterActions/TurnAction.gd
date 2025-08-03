@@ -17,16 +17,18 @@ func debug_action():
 func execute():
 	character_data.current_dir = to_dir
 
-	update_visual(to_dir)
+	update_visual(from_dir, to_dir)
 	return true
 
-func update_visual(dir : Vector2i):
-	SfxManager.play_sfx("push")
+func update_visual(from: Vector2i, to : Vector2i):
 	if character_data.ref_to_node:
-		#TODO
-		character_data.ref_to_node.rotation = Vector2(dir).angle() + PI/2
-		pass
+		if character_data.ref_to_node.has_method("queue_animation"):
+			character_data.ref_to_node.queue_animation("turn", [from, to])
+
+	#if character_data.ref_to_node:
+		#character_data.ref_to_node.rotation = Vector2(to).angle() + PI/2
+		#pass
 
 func undo():
 	character_data.current_dir = from_dir
-	update_visual(from_dir)
+	update_visual(to_dir, from_dir)

@@ -32,7 +32,7 @@ func execute():
 	GridManager.remove_object(from_pos)
 	GridManager.place_object(to_pos, object_data)
 	
-	update_visual(to_pos)
+	update_visual(from_pos, to_pos)
 	apply_cell_effect(to_pos)
 	return true
 
@@ -45,12 +45,13 @@ func apply_cell_effect(pos):
 	if action:
 		TurnManager.execute_action(action)
 
-func update_visual(pos:Vector2i):
-	#TODO
+func update_visual(from: Vector2i, to: Vector2i):
 	if object_data.ref_to_node:
-		object_data.ref_to_node.global_position = GridManager.grid_to_world(pos)
+		if object_data.ref_to_node.has_method("queue_animation"):
+			object_data.ref_to_node.queue_animation("push", [from, to])
+			SfxManager.play_sfx("push")
 
 func undo():
 	GridManager.remove_object(to_pos, object_data)
 	GridManager.place_object(from_pos, object_data)
-	update_visual(from_pos)
+	update_visual(to_pos, from_pos)

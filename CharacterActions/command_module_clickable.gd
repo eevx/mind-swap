@@ -35,6 +35,7 @@ func _unhandled_input(event):
 
 func reset():
 	position = _init_pos
+	z_index = 2
 
 func get_overlapping_clickable() -> ClickableModule:
 	var space_state = get_world_2d().direct_space_state
@@ -55,3 +56,5 @@ func _on_input_event(_viewport, _event, _shape_idx):
 			return
 		_clicked = true
 		_mouse_offset = get_global_mouse_position() - global_position
+		get_viewport().set_input_as_handled()
+		z_index = 3

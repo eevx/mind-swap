@@ -15,10 +15,13 @@ func execute():
 
 func update_visual(show_value: bool):
 	if object_data.ref_to_node:
-		object_data.ref_to_node.visible = show_value
+		if object_data.ref_to_node.has_method("queue_animation"):
+			object_data.ref_to_node.queue_animation("death", [show_value])
+
+	#if object_data.ref_to_node:
+		#object_data.ref_to_node.visible = show_value
 
 func debug_action():
-	#TODO
 	return ["destroy_action", object_data.ref_to_node, pos]
 
 func undo():
