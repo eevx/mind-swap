@@ -4,4 +4,4 @@
 
 [node name="LevelArray" type="Node"]
 script = ExtResource("1_oilfv")
-levels = Array[String](["res://level_test.tscn"])
+levels = Array[String](["res://Levels/level_d1.tscn", "res://Levels/level_d2.tscn", "res://Levels/level_d3.tscn", "res://Levels/level_d4.tscn", "res://Levels/level_d5.tscn", "res://Levels/level_d6.tscn", "res://Levels/level_d7.tscn", "res://Levels/level_d8.tscn"])

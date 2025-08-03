@@ -64,6 +64,7 @@ scale = Vector2(1.21, 1.21)
 
 [node name="Back" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 46
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yicuu")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_a1njc")
@@ -84,6 +85,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_gecc4")
 
 [node name="Reload" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yicuu")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_a1njc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_88scr")
@@ -121,6 +123,7 @@ scale = Vector2(1.72, 1.72)
 
 [node name="undo" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_fonsf")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_xwcqv")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_88scr")
@@ -135,6 +138,7 @@ metadata/_custom_type_script = "uid://blrn0dk83d5bu"
 
 [node name="pause_play" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_fonsf")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_xwcqv")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_88scr")
@@ -149,6 +153,7 @@ metadata/_custom_type_script = "uid://blrn0dk83d5bu"
 
 [node name="forward" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_fonsf")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_xwcqv")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_88scr")

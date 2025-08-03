@@ -11,13 +11,13 @@
 script = ExtResource("4_ud7fb")
 command_array = Array[int]([4, 1])
 current_dir = Vector2i(0, 1)
-turn_order = 1
 metadata/_custom_type_script = "uid://bah1h38kcvyvw"
 
 [sub_resource type="Resource" id="Resource_u2kym"]
 script = ExtResource("4_ud7fb")
 command_array = Array[int]([0, 0])
 current_dir = Vector2i(0, -1)
+turn_order = 1
 metadata/_custom_type_script = "uid://bah1h38kcvyvw"
 
 [node name="level_d5" type="Node2D"]
