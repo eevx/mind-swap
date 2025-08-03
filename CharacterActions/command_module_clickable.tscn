@@ -1,15 +1,31 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3qd4m6h3svux"]
+[gd_scene load_steps=10 format=3 uid="uid://c3qd4m6h3svux"]
 
 [ext_resource type="Script" uid="uid://i7hnt70rbnbu" path="res://CharacterActions/command_module_clickable.gd" id="1_6efe4"]
+[ext_resource type="Texture2D" uid="uid://b36fg3e3frhdt" path="res://Assets/sprite_sheet_2.png" id="2_idfbw"]
 [ext_resource type="Texture2D" uid="uid://lmw8q36ds1c5" path="res://Assets/test_sprite.png" id="2_jlsrn"]
 [ext_resource type="FontFile" uid="uid://cb5ydtoqxovuo" path="res://Assets/Jersey10-Regular.ttf" id="3_idfbw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6efe4"]
-size = Vector2(32, 32)
+size = Vector2(96, 96)
 
 [sub_resource type="LabelSettings" id="LabelSettings_6efe4"]
 line_spacing = -4.23
 font = ExtResource("3_idfbw")
+
+[sub_resource type="Animation" id="Animation_idfbw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -51)]
+}
 
 [sub_resource type="Animation" id="Animation_jlsrn"]
 resource_name = "idle"
@@ -27,39 +43,27 @@ tracks/0/keys = {
 "values": [Vector2(0, -51), Vector2(0, -60), Vector2(0, -51)]
 }
 
-[sub_resource type="Animation" id="Animation_idfbw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D2:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -51)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_srfp8"]
 _data = {
 &"RESET": SubResource("Animation_idfbw"),
 &"idle": SubResource("Animation_jlsrn")
 }
 
-[node name="command_module_clickable" type="Area2D" node_paths=PackedStringArray("indicator_sprite")]
+[node name="command_module_clickable" type="Area2D" node_paths=PackedStringArray("command_sprite", "indicator_sprite")]
 script = ExtResource("1_6efe4")
+command_sprite = NodePath("Sprite2D")
 indicator_sprite = NodePath("Sprite2D2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6efe4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1.0582933, 1.3847421, 1.6796918, 1)
-texture = ExtResource("2_jlsrn")
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_idfbw")
+hframes = 5
+vframes = 2
 region_enabled = true
-region_rect = Rect2(448, 0, 64, 64)
+region_rect = Rect2(64, 0, 320, 128)
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 visible = false
@@ -69,6 +73,7 @@ region_enabled = true
 region_rect = Rect2(256, 512, 64, 64)
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -23.0
 offset_top = -16.0
 offset_right = 23.0
@@ -86,3 +91,5 @@ libraries = {
 autoplay = "idle"
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

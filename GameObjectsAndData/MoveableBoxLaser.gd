@@ -11,6 +11,9 @@ enum laser_type {VERTICAL, HORIZONTAL}
 @export var laser_1 : LaserLine
 @export var laser_2 : LaserLine
 
+var laser_1_init_pos : Vector2
+var laser_2_init_pos : Vector2
+
 var dropped := false
 
 func _ready():
@@ -20,6 +23,8 @@ func _ready():
 		horizontal_sprite.hide()
 	else:
 		vertical_sprite.hide()
+	laser_1_init_pos = laser_1.position
+	laser_2_init_pos = laser_2.position
 
 func _process(_delta):
 	_show_laser()
@@ -28,27 +33,27 @@ func _show_laser():
 	if not object_data:
 		return
 	
-	if dropped:
-		laser_1.hide()
-		laser_2.hide()
-		return
-	else:
-		laser_1.show()
-		laser_2.show()
-	
-	var pos = GridManager.world_to_grid(global_position)
-	
-	#var pos = GridManager.get_object_grid_pos(object_data)
-	#var further_check := true
-	#if GridManager.get_cell_data_world(global_position).get_occupant():
-		#further_check = GridManager.get_cell_data_world(global_position).get_occupant().ref_to_node == self
-	#if not pos and not further_check:
+	#if dropped:
 		#laser_1.hide()
 		#laser_2.hide()
 		#return
 	#else:
 		#laser_1.show()
 		#laser_2.show()
+	
+	#var pos = GridManager.world_to_grid(global_position)
+	#
+	var pos = GridManager.get_object_grid_pos(object_data)
+	#var further_check := true
+	#if GridManager.get_cell_data_world(global_position).get_occupant():
+		#further_check = GridManager.get_cell_data_world(global_position).get_occupant().ref_to_node == self
+	if pos == null:
+		laser_1.hide()
+		laser_2.hide()
+		return
+	else:
+		laser_1.show()
+		laser_2.show()
 
 	var max_extent := 40
 	var directions := []
@@ -70,32 +75,43 @@ func _show_laser():
 			if occupant is MoveableObjectData or cell_data.get_type() == cell_data.cell_type.WALL:
 				ends.push_back(i)
 				break
-				
+	
+	#laser_1.set_point_position(0, laser_1_init_pos)
+	#laser_2.set_point_position(0, laser_2_init_pos)
+	#
 	if ends.size() == 2:
-		laser_1.set_point_position(1, GridManager.grid_to_world(pos + directions[0] * ends[0]))
-		laser_2.set_point_position(1, GridManager.grid_to_world(pos + directions[1] * ends[1]))
+		laser_1.set_point_position(1, laser_1.to_local(GridManager.grid_to_world(pos + directions[0] * ends[0])))
+		laser_2.set_point_position(1, laser_2.to_local(GridManager.grid_to_world(pos + directions[1] * ends[1])))
 	
 	if laser_direction == laser_type.VERTICAL:
-		laser_1.set_point_position(1, Vector2(laser_1.get_point_position(0).x, laser_1.get_point_position(1).y) - directions[0] * GlobalVariables.GRID_CELL_SIZE.y * 1.)
-		laser_2.set_point_position(1, Vector2(laser_2.get_point_position(0).x, laser_2.get_point_position(1).y))
+		laser_1.points[1].x = laser_1.points[0].x
+		laser_2.points[1].x = laser_2.points[0].x
+		laser_2.points[1].y -= GlobalVariables.GRID_CELL_SIZE.y
 	else:
-		laser_1.set_point_position(1, Vector2(laser_1.get_point_position(1).x, laser_1.get_point_position(0).y))
-		laser_2.set_point_position(1, Vector2(laser_2.get_point_position(1).x, laser_2.get_point_position(0).y) - directions[1] * GlobalVariables.GRID_CELL_SIZE.x * 1.)
+		laser_1.points[1].y = laser_1.points[0].y
+		laser_2.points[1].y = laser_2.points[0].y
+	
+	#if laser_direction == laser_type.VERTICAL:
+		#laser_1.set_point_position(1, laser_1.to_local(Vector2(laser_1.get_point_position(0).x, laser_1.get_point_position(1).y)))
+		#laser_2.set_point_position(1, laser_2.to_local(Vector2(laser_2.get_point_position(0).x, laser_2.get_point_position(1).y) - directions[1] * GlobalVariables.GRID_CELL_SIZE.y * 1.))
+	#else:
+		#laser_1.set_point_position(1, laser_1.to_local(Vector2(laser_1.get_point_position(1).x, laser_1.get_point_position(0).y)))
+		#laser_2.set_point_position(1, laser_2.to_local(Vector2(laser_2.get_point_position(1).x, laser_2.get_point_position(0).y) - directions[1] * GlobalVariables.GRID_CELL_SIZE.x * 1.))
 
 func _laser_effect():
 	if not object_data:
 		return
 	
-	if dropped:
-		return
+	#if dropped:
+		#return
+	#
+	#var pos = GridManager.world_to_grid(global_position)
 	
-	var pos = GridManager.world_to_grid(global_position)
-	
-	#var pos = GridManager.get_object_grid_pos(object_data)
+	var pos = GridManager.get_object_grid_pos(object_data)
 	#var further_check := true
 	#if GridManager.get_cell_data_world(global_position).get_occupant():
 		#further_check = GridManager.get_cell_data_world(global_position).get_occupant().ref_to_node == self
-	#if not pos and not further_check:
+	#if not pos:
 		#return
 
 	var max_extent := 40
@@ -106,10 +122,12 @@ func _laser_effect():
 		_: directions = []
 	
 	var ends : Array[int] = []
-
 	for dir in directions:
 		for i in range(1, max_extent + 1):
 			if i == max_extent:
+				ends.push_back(i)
+				break
+			if pos == null:
 				ends.push_back(i)
 				break
 			var cell_pos = pos + dir * i

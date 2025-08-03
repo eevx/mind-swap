@@ -15,7 +15,7 @@ func _ready():
 	var total_length = (GlobalVariables.GRID_CELL_SIZE.x + 4) * (num)
 	var start_pos = -float(total_length)/2.
 	for i in range(num):
-		var new_pos := Vector2(start_pos + (GlobalVariables.GRID_CELL_SIZE.x + 4) * i + GlobalVariables.GRID_CELL_SIZE.x / 2., 0)
+		var new_pos := Vector2(start_pos + (GlobalVariables.GRID_CELL_SIZE.x * 1.5 + 4) * i + GlobalVariables.GRID_CELL_SIZE.x / 2., 0)
 		var new_clickable : ClickableModule = clickable_module.instantiate()
 		new_clickable.index_in_array = i
 		new_clickable.position = new_pos
@@ -36,7 +36,7 @@ func _process(_delta):
 	#line.set_point_position(0, line.to_local(ref_to_data.ref_to_node.global_position))
 	#line.set_point_position(1, line.to_local(clock_position))
 	
-	var ordered_position = Vector2.RIGHT * get_window().get_visible_rect().size.x / 2.5 + Vector2.UP * (get_window().get_visible_rect().size.y * (0.5 - (ref_to_data.turn_order + 1) * 0.2))
+	var ordered_position = Vector2.RIGHT * get_window().get_visible_rect().size.x / 3. + Vector2.UP * (get_window().get_visible_rect().size.y * (0.5 - (ref_to_data.turn_order + 1) * 0.2))
 	global_position = ordered_position
 	line.set_point_position(0, line.to_local(ref_to_data.ref_to_node.global_position))
 	line.set_point_position(1, line.to_local(ordered_position))

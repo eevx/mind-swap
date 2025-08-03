@@ -6,7 +6,9 @@ var index_in_array : int
 var _clicked := false
 var _mouse_offset := Vector2()
 var _init_pos : Vector2
+var current_type : int = 0
 
+@export var command_sprite : Sprite2D
 @export var indicator_sprite : Sprite2D
 var _currently_indicated := false
 
@@ -17,9 +19,10 @@ func _ready():
 		indicator_sprite.hide()
 
 func update_visual(type : int):
-	#TODO
-	$Label.text = CharacterObjectData.command_type.find_key(type)
-	$Label.text = $Label.text.replace("_", " ").capitalize()
+	command_sprite.frame = type
+	current_type = type
+	#$Label.text = CharacterObjectData.command_type.find_key(type)
+	#$Label.text = $Label.text.replace("_", " ").capitalize()
 	pass
 
 func _process(_delta):
@@ -57,7 +60,7 @@ func _unhandled_input(event):
 			var swap_action_2 : Action = SwapAction.new(swap_attempt.owner_data, temp_command_type, swap_attempt.index_in_array)
 			TurnManager.execute_action(swap_action_1)
 			TurnManager.execute_action(swap_action_2)
-	reset()
+		reset()
 
 func reset():
 	position = _init_pos
@@ -83,4 +86,11 @@ func _on_input_event(_viewport, _event, _shape_idx):
 		_clicked = true
 		_mouse_offset = get_global_mouse_position() - global_position
 		get_viewport().set_input_as_handled()
-		z_index = 3
+		z_index = 5
+
+func _on_mouse_entered():
+	command_sprite.frame = current_type + 5
+
+
+func _on_mouse_exited():
+	update_visual(current_type)

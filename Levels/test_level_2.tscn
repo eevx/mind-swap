@@ -44,7 +44,7 @@ position = Vector2(-96, -96)
 EnemyData = SubResource("Resource_4qsmn")
 
 [node name="BaseEnemy3" parent="." instance=ExtResource("3_2f5y7")]
-position = Vector2(-32, 96)
+position = Vector2(-32, 32)
 EnemyData = SubResource("Resource_2f5y7")
 
 [node name="Camera2D" type="Camera2D" parent="."]

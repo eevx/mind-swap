@@ -15,7 +15,7 @@ metadata/_custom_type_script = "uid://bah1h38kcvyvw"
 
 [sub_resource type="Resource" id="Resource_56xti"]
 script = ExtResource("3_6ih1o")
-command_array = Array[int]([4, 0, 1])
+command_array = Array[int]([4, 0, 1, 0])
 current_dir = Vector2i(0, 1)
 metadata/_custom_type_script = "uid://bah1h38kcvyvw"
 
@@ -38,8 +38,6 @@ tile_map_data = PackedByteArray("AAD/////AAAHAAAAAAAAAP//AAAHAAAAAAADAP//AAAHAAA
 [node name="GridTileMap2" parent="." instance=ExtResource("1_rdhbp")]
 position = Vector2(0, -32)
 tile_map_data = PackedByteArray("AAABAP//AAAGAAUAAAD9/wAAAAAAAAYAAAD9/wEAAAAAAAYAAAD9/wIAAAAAAAYAAAD+/wAAAAAAAAYAAAD+/wEAAAAAAAYAAAD+/wIAAAAAAAYAAAD//wAAAAAAAAYAAAD//wEAAAAAAAYAAAD//wIAAAAAAAYAAAABAP7/AAAAAAYAAAACAP7/AAAAAAYAAAADAP7/AAAAAAYAAAD9/wMAAAAHAAYAAAD+/wMAAAAHAAYAAAD//wMAAAAHAAYAAAACAP//AAAGAAUAAAADAP//AAAGAAUAAAA=")
-
-[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="BaseEnemy2" parent="." instance=ExtResource("2_4xtnr")]
 position = Vector2(-32, -32)

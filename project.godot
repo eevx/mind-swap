@@ -23,10 +23,11 @@ TurnManager="*res://Globals/TurnManager.gd"
 ActionHistory="*res://Globals/ActionHistory.gd"
 SfxManager="*res://Globals/SFXManager.tscn"
 LevelArray="*res://Globals/level_array.tscn"
+LevelCamera="*res://Globals/level_camera.tscn"
 
 [display]
 
-window/size/viewport_width=1400
+window/size/viewport_width=1600
 window/size/viewport_height=900
 window/size/window_width_override=1280
 window/size/window_height_override=720
