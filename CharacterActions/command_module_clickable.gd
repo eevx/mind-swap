@@ -13,6 +13,8 @@ var _currently_indicated := false
 func _ready():
 	_init_pos = position
 	TurnManager.turn_ended.connect(_on_turn_ended)
+	if indicator_sprite:
+		indicator_sprite.hide()
 
 func update_visual(type : int):
 	#TODO

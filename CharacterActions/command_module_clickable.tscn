@@ -63,6 +63,7 @@ region_enabled = true
 region_rect = Rect2(448, 0, 64, 64)
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, -51)
 texture = ExtResource("2_jlsrn")
 region_enabled = true

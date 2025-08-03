@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2xf64imtv3ib"]
+
+[ext_resource type="Shader" uid="uid://cn01pg8g0u3w3" path="res://GameObjectsAndData/laser_line_texture.gdshader" id="1_8exqb"]
+[ext_resource type="Texture2D" uid="uid://bcgx1fbq7ac0f" path="res://Assets/laser_texture.png" id="2_dsfqa"]
+[ext_resource type="Texture2D" uid="uid://b1s63t3etb5oy" path="res://Assets/circle_particle.png" id="3_0oq6r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h2pvi"]
+shader = ExtResource("1_8exqb")
+shader_parameter/line_tex = ExtResource("2_dsfqa")
+shader_parameter/scroll_speed = -2.8369998972575
+shader_parameter/tile_scale = 0.31500001170262004
+shader_parameter/tint = Vector4(1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_513b5"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.9469324, 0.92235535, 0.9333268, 1, 0.87864035, 0.66243464, 0.78458625, 0.8784314, 0.9006891, 0.2422807, 0.5171764, 0)
+
+[node name="laser_line_texture" type="Line2D"]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_h2pvi")
+points = PackedVector2Array(0, 0, 109, 0)
+width = 16.305
+texture_mode = 1
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(109, 0)
+amount = 50
+texture = ExtResource("3_0oq6r")
+lifetime = 0.2
+emission_shape = 1
+emission_sphere_radius = 6.3
+direction = Vector2(-1, 0)
+spread = 93.99
+gravity = Vector2(0, 0)
+initial_velocity_min = 53.26
+initial_velocity_max = 172.88
+scale_amount_min = 0.2
+color_ramp = SubResource("Gradient_513b5")

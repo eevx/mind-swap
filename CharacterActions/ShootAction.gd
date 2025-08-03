@@ -19,8 +19,9 @@ func execute():
 		var cell_pos : Vector2i = pos + character_data.current_dir * (1 + i)
 		var cell_data : CellData = GridManager.get_cell_data(cell_pos)
 		final_pos = cell_pos
-		#TODO: add logic for box collision
 		if cell_data.get_type() == cell_data.cell_type.WALL:
+			break
+		elif cell_data.get_occupant() is MoveableObjectData:
 			break
 		elif cell_data.get_occupant() is CharacterObjectData:
 			var c = cell_data.get_occupant()

@@ -76,15 +76,19 @@ func _death_animation(is_show: bool):
 		Vector2i.UP:
 			player_animated_sprite.play("death_up", custom_speed)
 			await player_animated_sprite.animation_finished
+			if is_show: player_animated_sprite.frame = 0
 		Vector2i.DOWN:
 			player_animated_sprite.play("death_down", custom_speed)
 			await player_animated_sprite.animation_finished
+			if is_show: player_animated_sprite.frame = 0
 		Vector2i.LEFT:
 			player_animated_sprite.play("death_left", custom_speed)
 			await player_animated_sprite.animation_finished
+			if is_show: player_animated_sprite.frame = 0
 		Vector2i.RIGHT:
 			player_animated_sprite.play("death_right", custom_speed)
 			await player_animated_sprite.animation_finished
+			if is_show: player_animated_sprite.frame = 0
 	visible = is_show
 	animation_done()
 	
