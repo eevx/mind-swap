@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=4 uid="uid://ceaq1q35jo2pt"]
+
+[ext_resource type="PackedScene" uid="uid://bdao5x87efl8" path="res://LevelComponents/level_manager.tscn" id="1_cldss"]
+[ext_resource type="PackedScene" uid="uid://nvfa0p75xuke" path="res://LevelComponents/GridTileMap.tscn" id="2_x7bct"]
+[ext_resource type="PackedScene" uid="uid://cyy3whjrf3trl" path="res://LevelComponents/base_enemy.tscn" id="3_3e632"]
+[ext_resource type="Script" uid="uid://bah1h38kcvyvw" path="res://GameObjectsAndData/CharacterObjectData.gd" id="4_ksav6"]
+[ext_resource type="PackedScene" uid="uid://dohbj78a6y1gy" path="res://LevelComponents/moveable_laser_box.tscn" id="5_bfwnt"]
+
+[sub_resource type="Resource" id="Resource_cldss"]
+script = ExtResource("4_ksav6")
+command_array = Array[int]([4, 1])
+current_dir = Vector2i(0, 1)
+metadata/_custom_type_script = "uid://bah1h38kcvyvw"
+
+[sub_resource type="Resource" id="Resource_x7bct"]
+script = ExtResource("4_ksav6")
+command_array = Array[int]([4, 2])
+current_dir = Vector2i(0, -1)
+turn_order = 1
+metadata/_custom_type_script = "uid://bah1h38kcvyvw"
+
+[sub_resource type="Resource" id="Resource_ksav6"]
+script = ExtResource("4_ksav6")
+command_array = Array[int]([0, 0])
+turn_order = 4
+metadata/_custom_type_script = "uid://bah1h38kcvyvw"
+
+[node name="level_d6" type="Node2D"]
+y_sort_enabled = true
+
+[node name="LevelManager" parent="." instance=ExtResource("1_cldss")]
+visible = false
+
+[node name="GroundTile" parent="." instance=ExtResource("2_x7bct")]
+tile_map_data = PackedByteArray("AAADAP//AAAHAAAAAAACAP3/AAAHAAAAAAABAAIAAAAHAAAAAAADAAAAAAAHAAAAAAADAAEAAAAHAAAAAAADAAIAAAAHAAAAAAACAAEAAAAHAAAAAAACAAAAAAAHAAAAAAD9//7/AAAHAAAAAAD9////AAAHAAAAAAD//wMAAAAHAAAAAAABAAMAAAAHAAAAAAACAAMAAAAHAAAAAAD9/wMAAAAHAAAAAAADAAMAAAAHAAAAAAACAP7/AAAHAAAAAAADAP7/AAAHAAAAAAD//wIAAAAHAAAAAAD+/wMAAAAHAAAAAAADAP3/AAAHAAAAAAACAP//AAAHAAAAAAACAAIAAAAHAAAAAAD9/wAAAAAHAAAAAAD8/wAAAAAHAAAAAAD8////AAAHAAAAAAD8//7/AAAHAAAAAAD8//3/AAAHAAAAAAD8/wMAAAAHAAAAAAD+/wIAAAAHAAAAAAD9/wIAAAAHAAAAAAD8/wIAAAAHAAAAAAD8/wEAAAAHAAAAAAD9/wEAAAAHAAAAAAAAAAIAAAAHAAAAAAAAAAMAAAAHAAAAAAD9//3/AAAHAAAAAAD+//3/AAAHAAAAAAD///3/AAAHAAAAAAABAP3/AAAHAAAAAAD+//7/AAAHAAAAAAD///7/AAAHAAAAAAABAP7/AAAHAAAAAAD+/wAAAAAHAAAAAAD+/wEAAAAHAAAAAAABAP//AAAHAAAAAAABAAAAAAAHAAAAAAABAAEAAAAHAAAAAAAAAP//AAAHAAAAAAAAAAAAAAAHAAAAAAD//wAAAAAHAAAAAAD//wEAAAAHAAAAAAD/////AAAHAAAAAAAAAAEAAAAHAAAAAAD+////AAAHAAAAAAAAAP3/AAAAAAEAAAA=")
+
+[node name="WallTile" parent="." instance=ExtResource("2_x7bct")]
+position = Vector2(0, -32)
+tile_map_data = PackedByteArray("AAD9//z/AAAAAAUAAAD+//z/AAAAAAUAAAD///z/AAAAAAUAAAAAAPz/AAAAAAUAAAABAPz/AAAAAAUAAAACAPz/AAAAAAUAAAADAPz/AAAAAAUAAAD9/wQAAAAAAAUAAAD+/wQAAAAAAAUAAAACAAQAAAAAAAUAAAADAAQAAAAAAAUAAAD9/wUAAAAHAAUAAAD+/wUAAAAHAAUAAAACAAUAAAAHAAUAAAADAAUAAAAHAAUAAAD8/wUAAAAEAAUAAAACAP3/AAAHAAUAAAAAAP3/AAAHAAUAAAD///3/AAAHAAUAAAADAP3/AAAHAAUAAAD8//z/AAAAAAUAAAD8/wQAAAAAAAUAAAD8//3/AAAHAAUAAAD//wQAAAAAAAUAAAAAAAQAAAAAAAUAAAABAAQAAAAAAAUAAAD//wUAAAAHAAUAAAAAAAUAAAAHAAUAAAABAAUAAAAHAAUAAAD9//3/AAAHAAUAAAD+//3/AAAHAAUAAAABAP3/AAAHAAUAAAD7//3/AAAFAAYAAAD7//7/AAAFAAYAAAD7////AAAFAAYAAAD7/wAAAAAFAAYAAAD7/wEAAAAFAAYAAAD7/wIAAAAFAAYAAAD7/wMAAAAFAAYAAAAEAP3/AAAFAAYAAAAEAP7/AAAFAAYAAAAEAP//AAAFAAYAAAAEAAAAAAAFAAYAAAAEAAEAAAAFAAYAAAAEAAIAAAAFAAYAAAAEAAMAAAAFAAYAAAA=")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="BaseEnemy" parent="." instance=ExtResource("3_3e632")]
+position = Vector2(-224, -32)
+EnemyData = SubResource("Resource_cldss")
+
+[node name="BaseEnemy2" parent="." instance=ExtResource("3_3e632")]
+position = Vector2(224, 32)
+EnemyData = SubResource("Resource_x7bct")
+
+[node name="BaseEnemy5" parent="." instance=ExtResource("3_3e632")]
+position = Vector2(-160, 160)
+EnemyData = SubResource("Resource_ksav6")
+
+[node name="MoveableLaserBox" parent="." instance=ExtResource("5_bfwnt")]
+position = Vector2(32, 96)
+laser_direction = 1
