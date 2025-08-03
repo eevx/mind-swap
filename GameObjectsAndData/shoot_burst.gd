@@ -11,7 +11,9 @@ var time := 0.2
 func _ready():
 	line_texture.set_point_position(0, to_local(start_pos))
 	line_texture.set_point_position(1, to_local(end_pos))
-	particles.direction = line_texture.get_point_position(1).direction_to(line_texture.get_point_position(0))
+	particles.direction = end_pos.direction_to(start_pos)
+	if start_pos.is_equal_approx(end_pos):
+		particles.spread = 179
 	particles.global_position = end_pos
 	particles.emitting = true	
 	line_texture.width = 10

@@ -23,6 +23,14 @@ TurnManager="*res://Globals/TurnManager.gd"
 ActionHistory="*res://Globals/ActionHistory.gd"
 SfxManager="*res://Globals/SFXManager.tscn"
 
+[display]
+
+window/size/viewport_width=1400
+window/size/viewport_height=900
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+
 [input]
 
 left_click={

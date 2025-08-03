@@ -29,14 +29,14 @@ func _process(_delta):
 		return
 	
 	if ref_to_data.command_array.size() == 0:
-		hide()
+		disable()
 
 	#var clock_position = (Vector2.UP * get_window().get_visible_rect().size.y / 3.).rotated((ref_to_data.turn_order + 1) * PI/2.)
 	#global_position = clock_position
 	#line.set_point_position(0, line.to_local(ref_to_data.ref_to_node.global_position))
 	#line.set_point_position(1, line.to_local(clock_position))
 	
-	var ordered_position = Vector2.RIGHT * get_window().get_visible_rect().size.x / 3. + Vector2.UP * (get_window().get_visible_rect().size.y * (0.5 - (ref_to_data.turn_order + 1) * 0.2))
+	var ordered_position = Vector2.RIGHT * get_window().get_visible_rect().size.x / 2.5 + Vector2.UP * (get_window().get_visible_rect().size.y * (0.5 - (ref_to_data.turn_order + 1) * 0.2))
 	global_position = ordered_position
 	line.set_point_position(0, line.to_local(ref_to_data.ref_to_node.global_position))
 	line.set_point_position(1, line.to_local(ordered_position))
@@ -46,3 +46,15 @@ func update_visuals():
 	for clickable in module_array:
 		clickable.update_visual(ref_to_data.command_array[i])
 		i += 1
+
+func enable():
+	visible = true
+	for child in get_children():
+		if child is ClickableModule:
+			child.collision_layer = 1
+
+func disable():
+	visible = false
+	for child in get_children():
+		if child is ClickableModule:
+			child.collision_layer = 0

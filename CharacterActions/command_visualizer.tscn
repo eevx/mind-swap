@@ -8,7 +8,6 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="CommandVisualizer" type="Node2D" node_paths=PackedStringArray("line")]
-visible = false
 top_level = true
 z_index = 3
 script = ExtResource("1_rt0si")

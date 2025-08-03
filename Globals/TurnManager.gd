@@ -59,7 +59,6 @@ func advance_turn() -> bool:
 		_move_index = 0
 		if _turn_character_index >= _turn_characters.size():
 			end_turn()
-			return false
 		return false
 
 	ActionHistory.start_new_log(character)
@@ -70,8 +69,7 @@ func advance_turn() -> bool:
 	var new_action : Action = character.run_command(command)
 	if new_action:
 		turn_success = execute_action(new_action)
-		if turn_success:
-			turn_ended.emit()
+		turn_ended.emit()
 		return turn_success
 	return false
 

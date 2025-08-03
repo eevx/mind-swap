@@ -68,17 +68,16 @@ func setup_command_visualizers():
 
 func show_command_visualizers():
 	for v in visualizers:
-		v.show()
+		v.enable()
 
 func hide_command_visualizers():
 	for v in visualizers:
-		v.hide()
+		v.disable()
 
 func _on_scrub_left_button_down():
 	if current_state != level_state.PAUSE:
 		state_transition_to(level_state.PAUSE)
-	for v in visualizers:
-		v.show()
+	show_command_visualizers()
 	ActionHistory.undo_last_action()
 
 func _on_play_pause_button_down():
@@ -105,7 +104,7 @@ func _next_turn(continue_if_failed := false):
 	
 	var turn_success := TurnManager.advance_turn()
 	if not turn_success and continue_if_failed:
-		await get_tree().create_timer(GlobalVariables.TIME_STEP/2.).timeout
+		await get_tree().create_timer(GlobalVariables.TIME_STEP).timeout
 		_next_turn()
 	else:
 		timer.start()

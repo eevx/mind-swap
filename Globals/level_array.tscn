@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://5v06tu2p3x6"]
+
+[ext_resource type="Script" uid="uid://bg2woggopnfbn" path="res://Globals/level_array.gd" id="1_oilfv"]
+
+[node name="LevelArray" type="Node"]
+script = ExtResource("1_oilfv")
+levels = Array[String](["res://level_test.tscn"])

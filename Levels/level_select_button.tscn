@@ -6,6 +6,5 @@
 theme_override_font_sizes/font_size = 26
 text = "LEVEL1"
 script = ExtResource("1_xlus6")
-level_scene_path = "res://level_test.tscn"
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]
