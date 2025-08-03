@@ -37,8 +37,6 @@ func state_process():
 			pass
 
 func state_transition_to(new_state : level_state):
-	if current_state == new_state:
-		push_warning("changed to same state")
 	match current_state: #state exit
 		level_state.PLAY:
 			pass

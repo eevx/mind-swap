@@ -3,6 +3,7 @@ class_name ShootAction
 
 var character_data: CharacterObjectData
 var pos : Vector2i
+var final_pos : Vector2i
 
 ## initialize as character_data, from (vector2i), to (vector2i)
 func _init(data: CharacterObjectData, p: Vector2i):
@@ -14,7 +15,6 @@ func debug_action():
 
 func execute():
 	var extent := 30
-	var final_pos : Vector2i
 	for i in range(extent):
 		var cell_pos : Vector2i = pos + character_data.current_dir * (1 + i)
 		var cell_data : CellData = GridManager.get_cell_data(cell_pos)
@@ -35,8 +35,7 @@ func update_visual(from: Vector2i, to : Vector2i):
 	if character_data.ref_to_node:
 		if character_data.ref_to_node.has_method("queue_animation"):
 			character_data.ref_to_node.queue_animation("shoot", [from, to])
-
 	pass
 
 func undo():
-	pass
+	update_visual(pos, final_pos)

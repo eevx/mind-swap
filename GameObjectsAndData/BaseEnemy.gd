@@ -4,6 +4,7 @@ class_name BaseEnemy
 @export var EnemyData : CharacterObjectData
 @export var player_sprite : Sprite2D
 @export var player_animated_sprite : AnimatedSprite2D
+@export var shoot_scene : PackedScene
 
 var animation_tween : Tween
 
@@ -12,8 +13,6 @@ func register():
 	EnemyData.ref_to_node = self
 	var world_pos = global_position
 	GridManager.place_object_world(world_pos, EnemyData)
-	#TODO
-	#rotation = Vector2(EnemyData.current_dir).angle() + PI/2
 
 func register_animations():
 	_animation_library = {
@@ -98,6 +97,16 @@ func _shoot_animation(from_pos : Vector2i, to_pos : Vector2i):
 	if animation_tween:
 		animation_tween.kill()
 	
+	var dir = to_pos - from_pos
+	if shoot_scene.can_instantiate():
+		var new_shoot_scene : ShootBurst = shoot_scene.instantiate()
+		var start = GridManager.grid_to_world(from_pos)
+		var end = GridManager.grid_to_world(to_pos)
+		new_shoot_scene.start_pos = start + EnemyData.current_dir * GlobalVariables.GRID_CELL_SIZE/2.
+		new_shoot_scene.end_pos = end + Vector2i.UP * GlobalVariables.GRID_CELL_SIZE/2.
+		new_shoot_scene.time = GlobalVariables.ANIMATION_TIME_STEP
+		add_child(new_shoot_scene)
+		
 	var custom_speed = max(0.5 / GlobalVariables.ANIMATION_TIME_STEP, 1.0)
 	match EnemyData.current_dir:
 		Vector2i.UP:

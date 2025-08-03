@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://ckc8d03g642we"]
+
+[ext_resource type="Script" uid="uid://6egfootbuyl1" path="res://GameObjectsAndData/shoot_burst.gd" id="1_dash5"]
+[ext_resource type="Shader" uid="uid://cn01pg8g0u3w3" path="res://GameObjectsAndData/laser_line_texture.gdshader" id="1_yfrqf"]
+[ext_resource type="Texture2D" uid="uid://bcgx1fbq7ac0f" path="res://Assets/laser_texture.png" id="2_20w4u"]
+[ext_resource type="Texture2D" uid="uid://bnhhakbi2n8j2" path="res://Assets/line_particle.png" id="4_dash5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dash5"]
+shader = ExtResource("1_yfrqf")
+shader_parameter/line_tex = ExtResource("2_20w4u")
+shader_parameter/scroll_speed = -2.269999870325
+shader_parameter/tile_scale = 0.10000000149012
+shader_parameter/tint = Vector4(1, 1, 1, 1)
+
+[sub_resource type="Curve" id="Curve_amorn"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.9817073, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dash5"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Curve" id="Curve_403l6"]
+_data = [Vector2(0, 0.42185515), 0.0, 0.0, 0, 0, Vector2(1e-05, 1), 0.0, 0.0, 0, 0, Vector2(0.06645569, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_vyyss"]
+offsets = PackedFloat32Array(0, 0.5, 0.85172415)
+colors = PackedColorArray(0.94200534, 0.9342516, 0.8608688, 1, 1, 0.7819207, 0.7152807, 0.8784314, 1, 1, 1, 0.042406976)
+
+[node name="shoot_burst" type="Node2D" node_paths=PackedStringArray("line_texture", "particles")]
+script = ExtResource("1_dash5")
+line_texture = NodePath("Line2D")
+particles = NodePath("CPUParticles2D")
+
+[node name="Line2D" type="Line2D" parent="."]
+material = SubResource("ShaderMaterial_dash5")
+points = PackedVector2Array(0, 0, 127, 0)
+width = 32.8
+width_curve = SubResource("Curve_amorn")
+texture_mode = 1
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 1
+material = SubResource("CanvasItemMaterial_dash5")
+position = Vector2(126, 1)
+emitting = false
+amount = 300
+texture = ExtResource("4_dash5")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 13.87
+particle_flag_align_y = true
+direction = Vector2(-1, 0)
+spread = 93.99
+gravity = Vector2(0, 0)
+initial_velocity_min = 53.26
+initial_velocity_max = 700.0
+scale_amount_min = 0.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_403l6")
+color_ramp = SubResource("Gradient_vyyss")
