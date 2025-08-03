@@ -11,10 +11,10 @@ func _ready():
 		return
 	ref_to_data.command_array_changed.connect(update_visuals)
 	var num = ref_to_data.command_array.size()
-	var total_length = (GlobalVariables.GRID_CELL_SIZE.x/2. + 2) * (num)
+	var total_length = (GlobalVariables.GRID_CELL_SIZE.x + 4) * (num)
 	var start_pos = -float(total_length)/2.
 	for i in range(num):
-		var new_pos := Vector2(start_pos + (GlobalVariables.GRID_CELL_SIZE.x/2. + 2) * i + GlobalVariables.GRID_CELL_SIZE.x / 2., 0)
+		var new_pos := Vector2(start_pos + (GlobalVariables.GRID_CELL_SIZE.x + 4) * i + GlobalVariables.GRID_CELL_SIZE.x / 2., 0)
 		var new_clickable : ClickableModule = clickable_module.instantiate()
 		new_clickable.index_in_array = i
 		new_clickable.position = new_pos

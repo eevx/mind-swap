@@ -27,4 +27,5 @@ func debug_action():
 
 func undo():
 	GridManager.place_object(pos, object_data)
+	GridManager.get_cell_data(pos).set_type(CellData.cell_type.DANGER)
 	update_visual(false)

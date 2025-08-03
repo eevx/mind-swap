@@ -7,17 +7,41 @@ var _clicked := false
 var _mouse_offset := Vector2()
 var _init_pos : Vector2
 
+@export var indicator_sprite : Sprite2D
+var _currently_indicated := false
+
 func _ready():
 	_init_pos = position
+	TurnManager.turn_ended.connect(_on_turn_ended)
 
 func update_visual(type : int):
 	#TODO
 	$Label.text = CharacterObjectData.command_type.find_key(type)
+	$Label.text = $Label.text.replace("_", " ").capitalize()
 	pass
 
 func _process(_delta):
 	if _clicked:
 		global_position = get_global_mouse_position() - _mouse_offset
+	else:
+		set_indicator()
+
+func _on_turn_ended():
+	if _currently_indicated:
+		var flash_tween = create_tween()
+		flash_tween.tween_property(self, "modulate", Color(2, 2, 2), 0.1)
+		flash_tween.tween_property(self, "modulate", Color(1, 1, 1), 0.1)
+
+func set_indicator():
+	if not indicator_sprite:
+		return
+	if TurnManager._turn_characters.size() > 0:
+		if TurnManager._turn_characters[TurnManager._turn_character_index] == owner_data and TurnManager._move_index == index_in_array:
+			indicator_sprite.show()
+			_currently_indicated = true
+		else:
+			indicator_sprite.hide()
+			_currently_indicated = false
 
 func _unhandled_input(event):
 	if event.is_action_released("left_click") and _clicked:

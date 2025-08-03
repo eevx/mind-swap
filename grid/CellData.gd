@@ -18,8 +18,8 @@ func get_occupant() -> GameObjectData:
 func add_occupant(obj: GameObjectData) -> void:
 	if not obj:
 		return
-	if occupant:
-		push_warning("cell occupant: ", occupant.ref_to_node, " removed by new occupant: ", obj.ref_to_node)
+	#if occupant:
+		#push_warning("cell occupant: ", occupant.ref_to_node, " removed by new occupant: ", obj.ref_to_node)
 	occupant = obj
 
 func remove_occupant() -> void:

@@ -52,4 +52,4 @@ EnemyData = SubResource("Resource_2f5y7")
 position = Vector2(32, -32)
 
 [node name="MoveableBox" parent="." instance=ExtResource("7_aw26p")]
-position = Vector2(-32, 32)
+position = Vector2(-32, -32)
