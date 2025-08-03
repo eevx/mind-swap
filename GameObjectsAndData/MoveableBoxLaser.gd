@@ -11,6 +11,8 @@ enum laser_type {VERTICAL, HORIZONTAL}
 @export var laser_1 : LaserLine
 @export var laser_2 : LaserLine
 
+var dropped := false
+
 func _ready():
 	super()
 	TurnManager.turn_ended.connect(_laser_effect)
@@ -26,17 +28,27 @@ func _show_laser():
 	if not object_data:
 		return
 	
-	var pos = GridManager.get_object_grid_pos(object_data)
-	var further_check := true
-	if GridManager.get_cell_data_world(global_position).get_occupant():
-		further_check = GridManager.get_cell_data_world(global_position).get_occupant().ref_to_node == self
-	if not pos and not further_check:
+	if dropped:
 		laser_1.hide()
 		laser_2.hide()
 		return
 	else:
 		laser_1.show()
 		laser_2.show()
+	
+	var pos = GridManager.world_to_grid(global_position)
+	
+	#var pos = GridManager.get_object_grid_pos(object_data)
+	#var further_check := true
+	#if GridManager.get_cell_data_world(global_position).get_occupant():
+		#further_check = GridManager.get_cell_data_world(global_position).get_occupant().ref_to_node == self
+	#if not pos and not further_check:
+		#laser_1.hide()
+		#laser_2.hide()
+		#return
+	#else:
+		#laser_1.show()
+		#laser_2.show()
 
 	var max_extent := 40
 	var directions := []
@@ -74,9 +86,18 @@ func _laser_effect():
 	if not object_data:
 		return
 	
-	var pos = GridManager.get_object_grid_pos(object_data)
-	if not pos:
+	if dropped:
 		return
+	
+	var pos = GridManager.world_to_grid(global_position)
+	
+	#var pos = GridManager.get_object_grid_pos(object_data)
+	#var further_check := true
+	#if GridManager.get_cell_data_world(global_position).get_occupant():
+		#further_check = GridManager.get_cell_data_world(global_position).get_occupant().ref_to_node == self
+	#if not pos and not further_check:
+		#return
+
 	var max_extent := 40
 	var directions := []
 	match laser_direction:
@@ -101,3 +122,7 @@ func _laser_effect():
 			elif occupant is MoveableObjectData or cell_data.get_type() == cell_data.cell_type.WALL:
 				ends.push_back(i)
 				break
+
+func _drop_animation(is_drop: bool):
+	super(is_drop)
+	dropped = is_drop

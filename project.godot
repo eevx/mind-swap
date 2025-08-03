@@ -22,6 +22,7 @@ GridManager="*res://Globals/GridManager.gd"
 TurnManager="*res://Globals/TurnManager.gd"
 ActionHistory="*res://Globals/ActionHistory.gd"
 SfxManager="*res://Globals/SFXManager.tscn"
+LevelArray="*res://Globals/level_array.tscn"
 
 [display]
 

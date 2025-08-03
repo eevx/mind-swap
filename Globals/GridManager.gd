@@ -17,13 +17,13 @@ func _ready():
 	for character_data in get_sorted_characters():
 		print(character_data.turn_order)
 
-func _process(_delta):
-	if Input.is_action_just_pressed("left_click"):
-		var pos = world_to_grid(get_tree().current_scene.get_global_mouse_position())
-		print(get_cell_data(pos).cell_type.find_key(get_cell_data(pos).get_type()))
-		if get_cell_data(pos).get_occupant():
-			print(get_cell_data(pos).get_occupant().ref_to_node)
-	#if Input.is_action_just_pressed("ui_right"):
+#func _process(_delta):
+	#if Input.is_action_just_pressed("left_click"):
+		#var pos = world_to_grid(get_tree().current_scene.get_global_mouse_position())
+		#print(get_cell_data(pos).cell_type.find_key(get_cell_data(pos).get_type()))
+		#if get_cell_data(pos).get_occupant():
+			#print(get_cell_data(pos).get_occupant().ref_to_node)
+	##if Input.is_action_just_pressed("ui_right"):
 		#TurnManager.start_new_turn()
 		#TurnManager.advance_turn()
 	#if Input.is_action_just_pressed("ui_left"):

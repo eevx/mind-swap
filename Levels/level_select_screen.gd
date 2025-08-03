@@ -5,4 +5,6 @@ func _ready():
 	for child in get_children():
 		if child is LevelSelectButton:
 			child.text = "LVL " + str(i+1)
-			child.pat
+			if i < LevelArray.levels.size():
+				child.level_path = LevelArray.levels[i]
+		i += 1
