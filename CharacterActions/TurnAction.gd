@@ -21,6 +21,7 @@ func execute():
 	return true
 
 func update_visual(dir : Vector2i):
+	SfxManager.play_sfx("push")
 	if character_data.ref_to_node:
 		#TODO
 		character_data.ref_to_node.rotation = Vector2(dir).angle() + PI/2

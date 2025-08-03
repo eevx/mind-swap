@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=4 uid="uid://c2qwlgw1d45px"]
+
+[ext_resource type="PackedScene" uid="uid://bdao5x87efl8" path="res://LevelComponents/level_manager.tscn" id="1_qv1v3"]
+[ext_resource type="PackedScene" uid="uid://nvfa0p75xuke" path="res://LevelComponents/GridTileMap.tscn" id="2_vfk2q"]
+[ext_resource type="PackedScene" uid="uid://cyy3whjrf3trl" path="res://LevelComponents/base_enemy.tscn" id="3_vaap1"]
+[ext_resource type="Script" uid="uid://bah1h38kcvyvw" path="res://GameObjectsAndData/CharacterObjectData.gd" id="4_sahq6"]
+
+[sub_resource type="Resource" id="Resource_qv1v3"]
+script = ExtResource("4_sahq6")
+command_array = Array[int]([0, 1, 0])
+current_dir = Vector2i(0, 1)
+metadata/_custom_type_script = "uid://bah1h38kcvyvw"
+
+[sub_resource type="Resource" id="Resource_vfk2q"]
+script = ExtResource("4_sahq6")
+command_array = Array[int]([0, 2, 4])
+current_dir = Vector2i(-1, 0)
+turn_order = 1
+metadata/_custom_type_script = "uid://bah1h38kcvyvw"
+
+[node name="level_s5" type="Node2D"]
+y_sort_enabled = true
+
+[node name="LevelManager" parent="." instance=ExtResource("1_qv1v3")]
+visible = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
+
+[node name="GridTileMap" parent="." instance=ExtResource("2_vfk2q")]
+tile_map_data = PackedByteArray("AAADAPz/AAACAAAAAAD9//z/AAACAAAAAAD+//z/AAACAAAAAAD///z/AAACAAAAAAAAAPz/AAACAAAAAAABAPz/AAACAAAAAAACAPz/AAACAAAAAAD9/wIAAAADAAAAAAD9/wEAAAADAAAAAAD9/wAAAAADAAAAAAACAP3/AAADAAAAAAD9////AAADAAAAAAD8//z/AAACAAAAAAD8//3/AAACAAAAAAD8//7/AAACAAAAAAD8////AAACAAAAAAD8/wAAAAACAAAAAAD8/wEAAAACAAAAAAD8/wIAAAACAAAAAAD8/wMAAAACAAAAAAD9/wMAAAACAAAAAAD+/wMAAAACAAAAAAD//wMAAAACAAAAAAAAAAMAAAACAAAAAAABAAMAAAACAAAAAAACAAMAAAACAAAAAAADAAMAAAACAAAAAAD///3/AAADAAAAAAD+//3/AAADAAAAAAD9//3/AAADAAAAAAD9//7/AAADAAAAAAAAAP3/AAADAAAAAAABAP3/AAADAAAAAAADAP3/AAACAAAAAAADAP7/AAACAAAAAAADAP//AAACAAAAAAACAAAAAAACAAAAAAADAAEAAAACAAAAAAADAAAAAAACAAAAAAADAAIAAAACAAAAAAACAAIAAAADAAAAAAABAAIAAAADAAAAAAD+/wIAAAADAAAAAAD+/wAAAAADAAAAAAAAAAEAAAADAAAAAAAAAAAAAAACAAAAAAD//wAAAAACAAAAAAD//wEAAAADAAAAAAAAAP//AAADAAAAAAABAP//AAADAAAAAAABAAAAAAACAAAAAAABAAEAAAADAAAAAAACAP//AAAAAAAAAAD/////AAADAAAAAAAAAAIAAAADAAAAAAD+/wEAAAADAAAAAAACAAEAAAADAAAAAAD+////AAADAAAAAAD+//7/AAADAAAAAAD///7/AAADAAAAAAAAAP7/AAADAAAAAAABAP7/AAADAAAAAAACAP7/AAADAAAAAAD//wIAAAADAAAAAAA=")
+
+[node name="BaseEnemy" parent="." instance=ExtResource("3_vaap1")]
+position = Vector2(-16, -48)
+EnemyData = SubResource("Resource_qv1v3")
+
+[node name="BaseEnemy2" parent="." instance=ExtResource("3_vaap1")]
+position = Vector2(16, 48)
+EnemyData = SubResource("Resource_vfk2q")

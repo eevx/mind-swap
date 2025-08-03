@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://mbalnq7u8nsb"]
+
+[ext_resource type="Script" uid="uid://bp3q0msrc600s" path="res://Assets/Sfx/audio_player_oneshot.gd" id="1_gm0o4"]
+
+[node name="audio_player_oneshot" type="AudioStreamPlayer"]
+autoplay = true
+script = ExtResource("1_gm0o4")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
