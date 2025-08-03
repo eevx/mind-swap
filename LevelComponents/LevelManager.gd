@@ -15,6 +15,7 @@ enum level_state {PLAY, PAUSE}
 var current_state : level_state 
 
 func _ready():
+	show()
 	timer.wait_time = GlobalVariables.TIME_STEP
 	timer.timeout.connect(_next_turn)
 	
@@ -121,3 +122,12 @@ func _on_reload_button_down():
 func _update_swap_counter():
 	if swap_counter:
 		swap_counter.text = "Swaps Left: " + str(int(swaps_allowed - 0.5 * float(TurnManager.swaps_performed)))
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event.is_action_pressed("space") and not event.is_echo():
+		if current_state == level_state.PLAY:
+			state_transition_to(level_state.PAUSE)
+		elif current_state == level_state.PAUSE:
+			state_transition_to(level_state.PLAY)
+	if event.is_action_pressed("r") and not event.is_echo():
+		SceneManager.reload_scene()

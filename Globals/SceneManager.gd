@@ -7,10 +7,6 @@ var transition_scene = preload("res://UI/scene_transition.tscn")
 func _ready():
 	current_scene = get_tree().current_scene
 
-func _process(_delta):
-	if Input.is_action_just_pressed("ui_accept"):
-		reload_scene(false)
-
 func goto_scene(file_path : String, is_transition := true):
 	call_deferred("deferred_goto_scene", file_path, is_transition)
 

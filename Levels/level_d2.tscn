@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=4 uid="uid://btdecsemfnpj3"]
+
+[ext_resource type="PackedScene" uid="uid://bdao5x87efl8" path="res://LevelComponents/level_manager.tscn" id="1_3rrta"]
+[ext_resource type="PackedScene" uid="uid://nvfa0p75xuke" path="res://LevelComponents/GridTileMap.tscn" id="2_m83o2"]
+[ext_resource type="PackedScene" uid="uid://cyy3whjrf3trl" path="res://LevelComponents/base_enemy.tscn" id="3_irpue"]
+[ext_resource type="Script" uid="uid://bah1h38kcvyvw" path="res://GameObjectsAndData/CharacterObjectData.gd" id="4_t307e"]
+
+[sub_resource type="Resource" id="Resource_wnc21"]
+script = ExtResource("4_t307e")
+command_array = Array[int]([0, 0])
+current_dir = Vector2i(-1, 0)
+metadata/_custom_type_script = "uid://bah1h38kcvyvw"
+
+[sub_resource type="Resource" id="Resource_lic31"]
+script = ExtResource("4_t307e")
+command_array = Array[int]([4, 4])
+current_dir = Vector2i(0, 1)
+turn_order = 1
+metadata/_custom_type_script = "uid://bah1h38kcvyvw"
+
+[node name="level_d2" type="Node2D"]
+y_sort_enabled = true
+
+[node name="LevelManager" parent="." instance=ExtResource("1_3rrta")]
+visible = false
+swaps_allowed = 1
+
+[node name="GroundTile" parent="." instance=ExtResource("2_m83o2")]
+tile_map_data = PackedByteArray("AAD/////AAAHAAAAAAAAAP//AAAHAAAAAAADAP//AAAHAAAAAAACAP3/AAAHAAAAAAABAP3/AAAHAAAAAAAAAP3/AAAHAAAAAAD///7/AAAHAAAAAAD+////AAAHAAAAAAAAAAAAAAAHAAAAAAABAAAAAAAHAAAAAAD///3/AAAHAAAAAAD+//3/AAAHAAAAAAABAAIAAAAHAAAAAAADAAAAAAAHAAAAAAADAAEAAAAHAAAAAAADAAIAAAAHAAAAAAACAAEAAAAHAAAAAAACAAAAAAAHAAAAAAABAAEAAAAHAAAAAAAAAAEAAAAHAAAAAAD9//7/AAAHAAAAAAD9////AAAHAAAAAAD//wMAAAAHAAAAAAAAAAMAAAAHAAAAAAABAAMAAAAHAAAAAAACAAMAAAAHAAAAAAD9/wMAAAAHAAAAAAADAAMAAAAHAAAAAAABAP//AAAHAAAAAAABAP7/AAAHAAAAAAACAP7/AAAHAAAAAAADAP7/AAAHAAAAAAD9/wAAAAAHAAAAAAD//wAAAAAHAAAAAAD//wEAAAAHAAAAAAD//wIAAAAHAAAAAAD+/wIAAAAHAAAAAAD9/wIAAAAHAAAAAAD9/wEAAAAHAAAAAAD+/wEAAAAHAAAAAAD9/wQAAAAAAAEAAAD//wQAAAAAAAEAAAAAAAQAAAAAAAEAAAABAAQAAAAAAAEAAAACAAQAAAAAAAEAAAADAAQAAAACAAEAAAD+/wMAAAAHAAAAAAD9//3/AAAHAAAAAAADAP3/AAAHAAAAAAACAP//AAAHAAAAAAAAAP7/AAAHAAAAAAD+//7/AAAHAAAAAAACAAIAAAAHAAAAAAD+/wAAAAAAAAEAAAAAAAIAAAAAAAEAAAA=")
+
+[node name="WallTile" parent="." instance=ExtResource("2_m83o2")]
+position = Vector2(0, -32)
+tile_map_data = PackedByteArray("AAD8/wIAAAAFAAYAAAD8/wMAAAAFAAYAAAD8/wEAAAAFAAYAAAD8////AAAFAAYAAAAEAAEAAAAFAAYAAAD8//z/AAAEAAQAAAD8//3/AAAFAAYAAAD9//z/AAAAAAUAAAD+//z/AAAAAAUAAAD///z/AAAAAAUAAAAAAPz/AAAAAAUAAAABAPz/AAAAAAUAAAACAPz/AAAAAAUAAAADAPz/AAAAAAUAAAAEAPz/AAAGAAQAAAAEAP3/AAAFAAYAAAAEAP7/AAAFAAYAAAAEAAQAAAACAAYAAAD9/wQAAAAAAAUAAAD+/wQAAAAAAAUAAAD//wQAAAAAAAUAAAAAAAQAAAAAAAUAAAABAAQAAAAAAAUAAAACAAQAAAAAAAUAAAADAAQAAAAAAAUAAAD8/wQAAAADAAYAAAAEAAIAAAAFAAYAAAAEAAMAAAAFAAYAAAAEAP//AAAFAAYAAAD8//7/AAAFAAYAAAD9/wUAAAAHAAUAAAD+/wUAAAAHAAUAAAD//wUAAAAHAAUAAAAAAAUAAAAHAAUAAAABAAUAAAAHAAUAAAACAAUAAAAHAAUAAAADAAUAAAAHAAUAAAAEAAUAAAADAAUAAAD8/wUAAAAEAAUAAAACAP3/AAAHAAUAAAABAP3/AAAHAAUAAAAAAP3/AAAHAAUAAAD///3/AAAHAAUAAAD+//3/AAAHAAUAAAD9//3/AAAHAAUAAAADAP3/AAAHAAUAAAAEAAAAAAAFAAYAAAD8/wAAAAAFAAYAAAA=")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="BaseEnemy" parent="." instance=ExtResource("3_irpue")]
+position = Vector2(224, 32)
+EnemyData = SubResource("Resource_wnc21")
+
+[node name="BaseEnemy2" parent="." instance=ExtResource("3_irpue")]
+position = Vector2(32, -96)
+EnemyData = SubResource("Resource_lic31")
