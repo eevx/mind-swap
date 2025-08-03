@@ -11,8 +11,8 @@ metadata/_custom_type_script = "uid://cwiq6ygoj05ox"
 
 [node name="MoveableLaserBox" type="Node2D" node_paths=PackedStringArray("vertical_sprite", "horizontal_sprite", "laser_1", "laser_2")]
 script = ExtResource("1_pfcw1")
-vertical_sprite = NodePath("Sprite2D")
-horizontal_sprite = NodePath("Sprite2D2")
+vertical_sprite = NodePath("Sprite2D2")
+horizontal_sprite = NodePath("Sprite2D")
 laser_1 = NodePath("laser_line_texture")
 laser_2 = NodePath("laser_line_texture2")
 object_data = SubResource("Resource_nveo2")
@@ -22,6 +22,7 @@ position = Vector2(0, -13)
 
 [node name="laser_line_texture2" parent="." instance=ExtResource("3_uby3n")]
 position = Vector2(0, -13)
+points = PackedVector2Array(0, 0, 107, -1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -32)
@@ -30,7 +31,14 @@ region_enabled = true
 region_rect = Rect2(192, 128, 192, 128)
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(0, -32)
+position = Vector2(0, -41)
 texture = ExtResource("3_nveo2")
 region_enabled = true
-region_rect = Rect2(448, 128, 64, 128)
+region_rect = Rect2(448, 128, 64, 110.07956)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprite2D2"]
+z_index = -1
+position = Vector2(0, 63)
+texture = ExtResource("3_nveo2")
+region_enabled = true
+region_rect = Rect2(448, 236.13364, 64, 19.866364)

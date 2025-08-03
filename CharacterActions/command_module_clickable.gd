@@ -37,7 +37,7 @@ func _on_turn_ended():
 func set_indicator():
 	if not indicator_sprite:
 		return
-	if TurnManager._turn_characters.size() > 0:
+	if TurnManager._turn_characters.size() > 0 and TurnManager._turn_character_index < TurnManager._turn_characters.size():
 		if TurnManager._turn_characters[TurnManager._turn_character_index] == owner_data and TurnManager._move_index == index_in_array:
 			indicator_sprite.show()
 			_currently_indicated = true

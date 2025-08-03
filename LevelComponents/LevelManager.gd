@@ -96,7 +96,7 @@ func _on_scrub_right_button_down():
 		TurnManager.start_new_turn()
 	TurnManager.advance_turn()
 
-func _next_turn(continue_if_failed := true):
+func _next_turn(continue_if_failed := false):
 	if not current_state == level_state.PLAY:
 		return
 	

@@ -27,7 +27,10 @@ func _show_laser():
 		return
 	
 	var pos = GridManager.get_object_grid_pos(object_data)
-	if not pos:
+	var further_check := true
+	if GridManager.get_cell_data_world(global_position).get_occupant():
+		further_check = GridManager.get_cell_data_world(global_position).get_occupant().ref_to_node == self
+	if not pos and not further_check:
 		laser_1.hide()
 		laser_2.hide()
 		return
@@ -61,11 +64,11 @@ func _show_laser():
 		laser_2.set_point_position(1, GridManager.grid_to_world(pos + directions[1] * ends[1]))
 	
 	if laser_direction == laser_type.VERTICAL:
-		laser_1.set_point_position(1, Vector2(laser_1.get_point_position(0).x, laser_1.get_point_position(1).y))
+		laser_1.set_point_position(1, Vector2(laser_1.get_point_position(0).x, laser_1.get_point_position(1).y) - directions[0] * GlobalVariables.GRID_CELL_SIZE.y * 1.)
 		laser_2.set_point_position(1, Vector2(laser_2.get_point_position(0).x, laser_2.get_point_position(1).y))
 	else:
 		laser_1.set_point_position(1, Vector2(laser_1.get_point_position(1).x, laser_1.get_point_position(0).y))
-		laser_2.set_point_position(1, Vector2(laser_2.get_point_position(1).x, laser_2.get_point_position(0).y))
+		laser_2.set_point_position(1, Vector2(laser_2.get_point_position(1).x, laser_2.get_point_position(0).y) - directions[1] * GlobalVariables.GRID_CELL_SIZE.x * 1.)
 
 func _laser_effect():
 	if not object_data:

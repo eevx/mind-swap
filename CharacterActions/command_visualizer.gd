@@ -3,6 +3,7 @@ class_name CommandRowVisualizer
 
 var ref_to_data : CharacterObjectData
 @export var clickable_module : PackedScene
+@export var line : Line2D
 var module_array : Array[ClickableModule]
 
 func _ready():
@@ -23,6 +24,23 @@ func _ready():
 		add_child(new_clickable)
 	update_visuals()
 
+func _process(_delta):
+	if not ref_to_data or not line:
+		return
+	
+	if ref_to_data.command_array.size() == 0:
+		hide()
+
+	#var clock_position = (Vector2.UP * get_window().get_visible_rect().size.y / 3.).rotated((ref_to_data.turn_order + 1) * PI/2.)
+	#global_position = clock_position
+	#line.set_point_position(0, line.to_local(ref_to_data.ref_to_node.global_position))
+	#line.set_point_position(1, line.to_local(clock_position))
+	
+	var ordered_position = Vector2.RIGHT * get_window().get_visible_rect().size.x / 3. + Vector2.UP * (get_window().get_visible_rect().size.y * (0.5 - (ref_to_data.turn_order + 1) * 0.2))
+	global_position = ordered_position
+	line.set_point_position(0, line.to_local(ref_to_data.ref_to_node.global_position))
+	line.set_point_position(1, line.to_local(ordered_position))
+	
 func update_visuals():
 	var i := 0
 	for clickable in module_array:

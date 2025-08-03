@@ -57,7 +57,10 @@ func advance_turn() -> bool:
 	if _move_index >= character.command_array.size() or GridManager.get_object_grid_pos(character) == null:
 		_turn_character_index += 1
 		_move_index = 0
-		return advance_turn()
+		if _turn_character_index >= _turn_characters.size():
+			end_turn()
+			return false
+		return false
 
 	ActionHistory.start_new_log(character)
 	
