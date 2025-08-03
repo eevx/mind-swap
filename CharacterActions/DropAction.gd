@@ -18,7 +18,7 @@ func update_visual(show_value: bool):
 	if object_data.ref_to_node:
 		if object_data.ref_to_node.has_method("queue_animation"):
 			object_data.ref_to_node.queue_animation("drop", [show_value])
-
+			SfxManager.play_sfx("drop", 5.)
 	#if object_data.ref_to_node:
 		#object_data.ref_to_node.visible = show_value
 

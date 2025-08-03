@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dayud51rwvpbv"]
+[gd_scene load_steps=14 format=3 uid="uid://dayud51rwvpbv"]
 
 [ext_resource type="Script" uid="uid://5us4bvu66fxc" path="res://Globals/sfx_manager.gd" id="1_6nkip"]
 [ext_resource type="AudioStream" uid="uid://dlkcmov03gvep" path="res://Assets/Sfx/gridMove.wav" id="2_swsjg"]
@@ -6,13 +6,27 @@
 [ext_resource type="AudioStream" uid="uid://jnymbkjxie8d" path="res://Assets/Sfx/failedSomethingorCantMove.wav" id="3_swsjg"]
 [ext_resource type="AudioStream" uid="uid://8ayj4jlgpq7b" path="res://Assets/Sfx/click.wav" id="4_mlllv"]
 [ext_resource type="AudioStream" uid="uid://bkcjwi5cp0r3c" path="res://Assets/Sfx/hurtvar3.wav" id="5_v4h1o"]
+[ext_resource type="AudioStream" uid="uid://cgvedte47mrji" path="res://Assets/Sfx/restart_level.wav" id="6_w6jah"]
+[ext_resource type="AudioStream" uid="uid://pnern3u1nbdl" path="res://Assets/Sfx/machine_move.wav" id="7_froaa"]
+[ext_resource type="AudioStream" uid="uid://d4indrm54advu" path="res://Assets/Sfx/level_win.wav" id="8_ty3ma"]
+[ext_resource type="AudioStream" uid="uid://glg4412ut8tk" path="res://Assets/Sfx/hover_exit_select.wav" id="9_3bsla"]
+[ext_resource type="AudioStream" uid="uid://b8j3omkibk3iw" path="res://Assets/Sfx/box_drop.mp3" id="10_froaa"]
+[ext_resource type="AudioStream" uid="uid://b37x1frtxkj8m" path="res://Assets/Sfx/swap_sfx.mp3" id="11_ty3ma"]
+[ext_resource type="AudioStream" uid="uid://csx0lg8bdgq6n" path="res://Assets/Sfx/error-call-to-attention-129258.mp3" id="12_3bsla"]
 
 [node name="SfxManager" type="Node2D"]
 script = ExtResource("1_6nkip")
 sfx_dict = Dictionary[String, AudioStream]({
+"buzz": ExtResource("7_froaa"),
 "click": ExtResource("4_mlllv"),
 "death": ExtResource("5_v4h1o"),
+"drop": ExtResource("10_froaa"),
+"error": ExtResource("12_3bsla"),
+"hover": ExtResource("9_3bsla"),
+"level_win": ExtResource("8_ty3ma"),
 "push": ExtResource("2_swsjg"),
-"push2": ExtResource("3_swsjg")
+"push2": ExtResource("3_swsjg"),
+"restart": ExtResource("6_w6jah"),
+"swap": ExtResource("11_ty3ma")
 })
 audio_player = ExtResource("2_xbvlc")

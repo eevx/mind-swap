@@ -69,6 +69,7 @@ func goto_next_level():
 			if not LevelArray.levels[id+1].is_empty():
 				var new_level_id = id+1
 				goto_scene("res://Levels/level_complete.tscn", true)
+				SfxManager.play_sfx("level_win")
 				await scene_changed
 				await get_tree().create_timer(1.).timeout
 				goto_scene(LevelArray.levels[new_level_id])

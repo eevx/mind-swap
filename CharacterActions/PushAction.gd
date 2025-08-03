@@ -49,7 +49,7 @@ func update_visual(from: Vector2i, to: Vector2i):
 	if object_data.ref_to_node:
 		if object_data.ref_to_node.has_method("queue_animation"):
 			object_data.ref_to_node.queue_animation("push", [from, to])
-			SfxManager.play_sfx("push")
+			SfxManager.play_sfx("death", -20.)
 
 func undo():
 	GridManager.remove_object(to_pos, object_data)

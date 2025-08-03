@@ -18,6 +18,7 @@ func execute() -> bool:
 		return false
 	character_data.command_array[index] = command_type
 	TurnManager.swaps_performed += 1
+	SfxManager.play_sfx("swap")
 	character_data.command_array_changed.emit()
 	return true
 
@@ -28,6 +29,8 @@ func undo():
 	character_data.command_array = duplicate_command_array
 	character_data.command_array_changed.emit()
 	TurnManager.swaps_performed -= 1
+	SfxManager.play_sfx("swap")
+
 #func swap_command(type : command_type, index: int):
 	#if index >= command_array.size():
 		#return

@@ -81,8 +81,9 @@ func get_overlapping_clickable() -> ClickableModule:
 func _on_input_event(_viewport, _event, _shape_idx):
 	if Input.is_action_just_pressed("left_click"):
 		if TurnManager.swaps_performed >= 2 * TurnManager.swaps_allowed:
-			#TODO: visual
+			SfxManager.play_sfx("error")
 			return
+		SfxManager.play_sfx("hover", -7.)
 		_clicked = true
 		_mouse_offset = get_global_mouse_position() - global_position
 		get_viewport().set_input_as_handled()
@@ -91,6 +92,7 @@ func _on_input_event(_viewport, _event, _shape_idx):
 func _on_mouse_entered():
 	command_sprite.frame = current_type + 5
 	scale = Vector2.ONE * 1.1
+	SfxManager.play_sfx("hover", -10., randf_range(0.9, 1.1))
 
 
 func _on_mouse_exited():

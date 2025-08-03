@@ -166,6 +166,31 @@ icon = ExtResource("8_gecc4")
 script = ExtResource("6_6t1rr")
 metadata/_custom_type_script = "uid://blrn0dk83d5bu"
 
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+z_index = -2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -260.0
+offset_right = 384.0
+grow_vertical = 0
+mouse_filter = 2
+color = Color(0.13905138, 0.16056603, 0.19014582, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+z_index = -2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -900.0
+offset_right = 256.0
+offset_bottom = -612.0
+grow_vertical = 0
+mouse_filter = 2
+color = Color(0.13905138, 0.16056603, 0.19014582, 1)
+
 [connection signal="button_down" from="VBoxContainer/Back" to="." method="_on_back_button_down"]
 [connection signal="button_down" from="VBoxContainer/Reload" to="." method="_on_reload_button_down"]
 [connection signal="button_down" from="HBoxContainer/undo" to="." method="_on_scrub_left_button_down"]

@@ -128,6 +128,7 @@ func _on_back_button_down():
 		SceneManager.goto_scene(level_select_scene_path)
 
 func _on_reload_button_down():
+	SfxManager.play_sfx("restart")
 	SceneManager.reload_scene()
 
 func _update_swap_counter():

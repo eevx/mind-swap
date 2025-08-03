@@ -50,7 +50,7 @@ func update_visual(from: Vector2i, to:Vector2i):
 	if character_data.ref_to_node:
 		if character_data.ref_to_node.has_method("queue_animation"):
 			character_data.ref_to_node.queue_animation("move", [from, to])
-			SfxManager.play_sfx("push")
+			SfxManager.play_sfx("buzz")
 	#if character_data.ref_to_node:
 		#character_data.ref_to_node.global_position = GridManager.grid_to_world(to)
 
