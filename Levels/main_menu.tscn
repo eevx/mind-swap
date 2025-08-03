@@ -65,13 +65,13 @@ script = ExtResource("1_8md67")
 level_select_scene = "res://Levels/level_select.tscn"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.33333334)
 scale = Vector2(2.5777779, 2.5777779)
 texture = ExtResource("2_15p6s")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -432.0
 offset_top = -224.0
 offset_right = 473.0
@@ -83,11 +83,13 @@ label_settings = SubResource("LabelSettings_qor8d")
 environment = SubResource("Environment_6e2af")
 
 [node name="Button" type="Button" parent="."]
-offset_left = -128.0
-offset_right = 137.0
-offset_bottom = 144.0
+offset_left = 320.0
+offset_top = 192.0
+offset_right = 736.0
+offset_bottom = 384.0
+focus_mode = 0
 theme_override_fonts/font = ExtResource("3_5qvx8")
-theme_override_font_sizes/font_size = 126
+theme_override_font_sizes/font_size = 156
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yw3yt")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_1brcv")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_b8u61")
@@ -123,3 +125,4 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
