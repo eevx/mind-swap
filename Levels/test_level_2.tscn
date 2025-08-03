@@ -24,6 +24,7 @@ turn_order = 2
 metadata/_custom_type_script = "uid://bah1h38kcvyvw"
 
 [node name="test_level_2" type="Node2D"]
+y_sort_enabled = true
 
 [node name="LevelManager" parent="." instance=ExtResource("1_lh1fq")]
 
