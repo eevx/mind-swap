@@ -21,6 +21,7 @@ func _ready():
 	show()
 	timer.wait_time = GlobalVariables.TIME_STEP
 	timer.timeout.connect(_next_turn)
+	TurnManager.turn_ended.connect(check_for_win)
 	
 	await get_tree().process_frame
 	setup_command_visualizers()
@@ -31,20 +32,20 @@ func _ready():
 
 func _process(_delta):
 	state_process()
-	check_for_win()
 
 func check_for_win():
 	var c = GridManager.get_sorted_characters()
 	if c.size() == 0:
+		GlobalVariables.completed_levels.push_back(SceneManager.current_scene.scene_file_path)
 		SceneManager.goto_next_level()
 
 func state_process():
 	match current_state: #state process
 		level_state.PLAY:
-			pause_play_button.icon = play_texture
+			pause_play_button.icon = pause_texture
 			pass
 		level_state.PAUSE:
-			pause_play_button.icon = pause_texture
+			pause_play_button.icon = play_texture
 			pass
 
 func state_transition_to(new_state : level_state):
@@ -107,6 +108,8 @@ func _on_scrub_right_button_down():
 	TurnManager.advance_turn()
 
 func _next_turn(continue_if_failed := false):
+	check_for_win()
+	
 	if not current_state == level_state.PLAY:
 		return
 	

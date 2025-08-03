@@ -10,6 +10,8 @@ var label_text : String
 func _ready():
 	await get_parent().ready
 	icon = left_texture
+	if GlobalVariables.completed_levels.has(level_path):
+		icon = done_texture
 	label.text = label_text
 
 func _on_button_down():

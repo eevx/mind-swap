@@ -7,4 +7,6 @@ func _ready():
 			child.label_text = str(i+1)
 			if i < LevelArray.levels.size():
 				child.level_path = LevelArray.levels[i]
+			else:
+				child.disabled = true
 		i += 1

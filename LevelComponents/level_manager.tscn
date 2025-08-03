@@ -45,7 +45,6 @@ font_color = Color(1, 1, 0.827451, 1)
 
 [node name="LevelManager" type="CanvasLayer" node_paths=PackedStringArray("timer", "swap_counter", "pause_play_button")]
 script = ExtResource("1_yi4t7")
-swaps_allowed = null
 timer = NodePath("Timer")
 command_visualizer_scene = ExtResource("2_lnmxl")
 level_select_scene_path = "res://Levels/level_select.tscn"
