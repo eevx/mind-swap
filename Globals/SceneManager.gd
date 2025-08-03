@@ -65,7 +65,7 @@ func goto_next_level():
 	var current_level = current_scene.scene_file_path
 	if LevelArray.levels.has(current_level):
 		var id : int= LevelArray.levels.find(current_level)
-		if LevelArray.levels.size() > id:
+		if LevelArray.levels.size() > id + 1:
 			if not LevelArray.levels[id+1].is_empty():
 				var new_level_id = id+1
 				goto_scene("res://Levels/level_complete.tscn", true)
