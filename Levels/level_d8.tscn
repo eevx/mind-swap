@@ -7,15 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://dohbj78a6y1gy" path="res://LevelComponents/moveable_laser_box.tscn" id="5_3yjr7"]
 [ext_resource type="PackedScene" uid="uid://dvpa68x3mel0d" path="res://LevelComponents/moveable_box.tscn" id="6_yo6hr"]
 
-[sub_resource type="Resource" id="Resource_7cjue"]
-script = ExtResource("4_xvfhv")
-command_array = Array[int]([4, 1])
-current_dir = Vector2i(0, 1)
-metadata/_custom_type_script = "uid://bah1h38kcvyvw"
-
 [sub_resource type="Resource" id="Resource_yo6hr"]
 script = ExtResource("4_xvfhv")
-command_array = Array[int]([4, 2])
+command_array = Array[int]([0, 1, 0])
+current_dir = Vector2i(-1, 0)
+metadata/_custom_type_script = "uid://bah1h38kcvyvw"
+
+[sub_resource type="Resource" id="Resource_f30n7"]
+script = ExtResource("4_xvfhv")
+command_array = Array[int]([0, 0, 2])
 current_dir = Vector2i(0, -1)
 turn_order = 1
 metadata/_custom_type_script = "uid://bah1h38kcvyvw"
@@ -25,9 +25,10 @@ y_sort_enabled = true
 
 [node name="LevelManager" parent="." instance=ExtResource("1_7cjue")]
 visible = false
+swaps_allowed = 7
 
 [node name="GroundTile" parent="." instance=ExtResource("2_yo6hr")]
-tile_map_data = PackedByteArray("AAADAP//AAAHAAAAAAACAP3/AAAHAAAAAAABAAIAAAAHAAAAAAADAAAAAAAHAAAAAAADAAEAAAAHAAAAAAADAAIAAAAHAAAAAAACAAEAAAAHAAAAAAACAAAAAAAHAAAAAAD9//7/AAAHAAAAAAD9////AAAHAAAAAAD//wMAAAAHAAAAAAABAAMAAAAHAAAAAAACAAMAAAAHAAAAAAD9/wMAAAAHAAAAAAADAAMAAAAHAAAAAAACAP7/AAAHAAAAAAADAP7/AAAHAAAAAAD//wIAAAAHAAAAAAD+/wMAAAAHAAAAAAADAP3/AAAHAAAAAAACAP//AAAHAAAAAAACAAIAAAAHAAAAAAD9/wAAAAAHAAAAAAD8/wAAAAAHAAAAAAD8////AAAHAAAAAAD8//7/AAAHAAAAAAD8//3/AAAHAAAAAAD8/wMAAAAHAAAAAAD+/wIAAAAHAAAAAAD9/wIAAAAHAAAAAAD8/wIAAAAHAAAAAAD8/wEAAAAHAAAAAAD9/wEAAAAHAAAAAAAAAAIAAAAHAAAAAAAAAAMAAAAHAAAAAAD9//3/AAAHAAAAAAD+//3/AAAHAAAAAAD///3/AAAHAAAAAAABAP3/AAAHAAAAAAD+//7/AAAHAAAAAAD///7/AAAHAAAAAAABAP7/AAAHAAAAAAD+/wAAAAAHAAAAAAD+/wEAAAAHAAAAAAABAP//AAAHAAAAAAABAAAAAAAHAAAAAAABAAEAAAAHAAAAAAAAAP//AAAHAAAAAAAAAAAAAAAHAAAAAAD//wAAAAAHAAAAAAD//wEAAAAHAAAAAAD/////AAAHAAAAAAAAAAEAAAAHAAAAAAD+////AAAHAAAAAAAAAP3/AAAHAAAAAAAAAP7/AAAHAAAAAAA=")
+tile_map_data = PackedByteArray("AAADAP//AAAHAAAAAAACAP3/AAAHAAAAAAABAAIAAAAHAAAAAAADAAAAAAAHAAAAAAADAAEAAAAHAAAAAAADAAIAAAAHAAAAAAACAAEAAAAHAAAAAAACAAAAAAAHAAAAAAD9//7/AAAHAAAAAAD9////AAAHAAAAAAD//wMAAAAHAAAAAAABAAMAAAAHAAAAAAACAAMAAAAHAAAAAAD9/wMAAAAHAAAAAAADAAMAAAAHAAAAAAACAP7/AAAHAAAAAAADAP7/AAAHAAAAAAD//wIAAAAHAAAAAAD+/wMAAAAHAAAAAAADAP3/AAAHAAAAAAACAP//AAAHAAAAAAACAAIAAAAHAAAAAAD9/wAAAAAHAAAAAAD8/wAAAAAHAAAAAAD8////AAAHAAAAAAD8//7/AAAHAAAAAAD8//3/AAAHAAAAAAD8/wMAAAAHAAAAAAD+/wIAAAAHAAAAAAD9/wIAAAAHAAAAAAD8/wIAAAAHAAAAAAD8/wEAAAAHAAAAAAD9/wEAAAAHAAAAAAAAAAIAAAAHAAAAAAAAAAMAAAAHAAAAAAD9//3/AAAHAAAAAAD+//3/AAAHAAAAAAD///3/AAAHAAAAAAABAP3/AAAHAAAAAAD+//7/AAAHAAAAAAD///7/AAAHAAAAAAABAP7/AAAHAAAAAAD+/wEAAAAHAAAAAAABAP//AAAHAAAAAAABAAAAAAAHAAAAAAABAAEAAAAHAAAAAAAAAP//AAAHAAAAAAAAAAAAAAAHAAAAAAD//wAAAAAHAAAAAAD//wEAAAAHAAAAAAD/////AAAHAAAAAAAAAAEAAAAHAAAAAAD+////AAAHAAAAAAAAAP3/AAAHAAAAAAAAAP7/AAAHAAAAAAA=")
 
 [node name="WallTile" parent="." instance=ExtResource("2_yo6hr")]
 position = Vector2(0, -32)
@@ -36,12 +37,12 @@ tile_map_data = PackedByteArray("AAD9//z/AAAAAAUAAAD+//z/AAAAAAUAAAD///z/AAAAAAU
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="BaseEnemy" parent="." instance=ExtResource("3_f30n7")]
-position = Vector2(-224, -160)
-EnemyData = SubResource("Resource_7cjue")
+position = Vector2(-160, -160)
+EnemyData = SubResource("Resource_yo6hr")
 
 [node name="BaseEnemy2" parent="." instance=ExtResource("3_f30n7")]
-position = Vector2(96, 224)
-EnemyData = SubResource("Resource_yo6hr")
+position = Vector2(224, 224)
+EnemyData = SubResource("Resource_f30n7")
 
 [node name="MoveableLaserBox" parent="." instance=ExtResource("5_3yjr7")]
 position = Vector2(-32, 32)
