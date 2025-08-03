@@ -36,7 +36,7 @@ func _process(_delta):
 func check_for_win():
 	var c = GridManager.get_sorted_characters()
 	if c.size() == 0:
-		pass
+		SceneManager.goto_next_level()
 
 func state_process():
 	match current_state: #state process

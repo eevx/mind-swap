@@ -61,7 +61,8 @@ func add_transition(mode: int) -> SceneTransition:
 		return new_transition_scene
 	return null
 
-func goto_next_level(current_level : String):
+func goto_next_level():
+	var current_level = current_scene.scene_file_path
 	if LevelArray.levels.has(current_level):
 		var id : int= LevelArray.levels.find(current_level)
 		if LevelArray.levels.size() > id:
