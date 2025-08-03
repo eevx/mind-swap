@@ -450,7 +450,8 @@ player_sprite = NodePath("Sprite2D")
 player_animated_sprite = NodePath("AnimatedSprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1.2923464, 1.2923464)
+position = Vector2(0, -5)
+scale = Vector2(1.427, 1.427)
 texture = ExtResource("3_o4whs")
 hframes = 8
 vframes = 2
@@ -458,8 +459,8 @@ region_enabled = true
 region_rect = Rect2(0, 448, 512, 128)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
-scale = Vector2(1.2923464, 1.2923464)
+position = Vector2(0, -5)
+scale = Vector2(1.427, 1.427)
 sprite_frames = SubResource("SpriteFrames_j3cc8")
 animation = &"shoot_left"
 frame = 6
