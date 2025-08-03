@@ -20,6 +20,7 @@ turn_order = 1
 metadata/_custom_type_script = "uid://bah1h38kcvyvw"
 
 [sub_resource type="LabelSettings" id="LabelSettings_wnc21"]
+line_spacing = -7.385
 font = ExtResource("5_6xcu2")
 font_size = 40
 
@@ -48,12 +49,14 @@ position = Vector2(32, -96)
 EnemyData = SubResource("Resource_m83o2")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -735.0
-offset_top = -109.0
-offset_right = -351.0
-offset_bottom = 123.0
-text = "Pause to see looping commands
+offset_left = -720.0
+offset_top = -155.0
+offset_right = -313.0
+offset_bottom = 155.0
+text = "Pause to see commands.
 
-Swap commands to make them all disappear!"
+Swap commands to make them all disappear!
+
+Seek forward or backward with arrow keys, AD or the buttons below"
 label_settings = SubResource("LabelSettings_wnc21")
 autowrap_mode = 2
