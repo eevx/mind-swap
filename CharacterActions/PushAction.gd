@@ -41,7 +41,7 @@ func apply_cell_effect(pos):
 	var action : Action
 	if cell_data:
 		if cell_data.get_type() == cell_data.cell_type.DANGER:
-			action = DestroyAction.new(object_data, pos)
+			action = DropAction.new(object_data, pos)
 	if action:
 		TurnManager.execute_action(action)
 

@@ -1,6 +1,7 @@
 extends Node
 # TurnManager
 
+signal turn_ended
 signal all_turns_ended
 signal swap_action
 
@@ -66,6 +67,8 @@ func advance_turn() -> bool:
 	var new_action : Action = character.run_command(command)
 	if new_action:
 		turn_success = execute_action(new_action)
+		if turn_success:
+			turn_ended.emit()
 		return turn_success
 	return false
 

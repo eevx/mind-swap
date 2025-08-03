@@ -13,7 +13,8 @@ func register():
 func register_animations():
 	_animation_library = {
 		"push": func(args): _push_animation(args[0], args[1]),
-		"death": func(args): _death_animation(args[0])
+		"death": func(args): _death_animation(args[0]),
+		"drop": func(args): _drop_animation(args[0])
 	}
 
 func _push_animation(from: Vector2i, to: Vector2i):
@@ -34,3 +35,14 @@ func _death_animation(is_show: bool):
 	
 	visible = is_show
 	animation_done()
+
+func _drop_animation(is_drop: bool):
+	if animation_tween:
+		animation_tween.kill()
+	var dir = 1 if is_drop else -1
+	z_index = z_index - 1 if is_drop else z_index + 1
+	var final_pos = global_position + dir * Vector2.DOWN * float(GlobalVariables.GRID_CELL_SIZE.y) / 2.
+	animation_tween = create_tween()
+	animation_tween.tween_property(self, "global_position", final_pos, GlobalVariables.ANIMATION_TIME_STEP)
+	animation_tween.tween_callback(func(): animation_done())
+		
