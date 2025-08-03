@@ -50,5 +50,8 @@ func get_overlapping_clickable() -> ClickableModule:
 
 func _on_input_event(_viewport, _event, _shape_idx):
 	if Input.is_action_just_pressed("left_click"):
+		if TurnManager.swaps_performed >= 2 * TurnManager.swaps_allowed:
+			#TODO: visual
+			return
 		_clicked = true
 		_mouse_offset = get_global_mouse_position() - global_position

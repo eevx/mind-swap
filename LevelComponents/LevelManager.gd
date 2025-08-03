@@ -1,9 +1,14 @@
 extends CanvasLayer
 class_name LevelManager
 
+@export_category("LEVEL SETTINGS")
+@export var swaps_allowed := 2
+
+@export_category("DON'T CHANGE")
 @export var timer : Timer
 @export var command_visualizer_scene : PackedScene
 @export var level_select_scene_path : String
+@export var swap_counter : Label
 var visualizers : Array[CommandRowVisualizer]
 
 enum level_state {PLAY, PAUSE}
@@ -15,6 +20,9 @@ func _ready():
 	
 	await get_tree().process_frame
 	setup_command_visualizers()
+	TurnManager.swaps_allowed = swaps_allowed
+	TurnManager.swap_action.connect(_update_swap_counter)
+	_update_swap_counter()
 	state_transition_to(level_state.PLAY)
 
 func _process(_delta):
@@ -54,8 +62,8 @@ func setup_command_visualizers():
 	for c in char_array:
 		var new_visualizer : CommandRowVisualizer = command_visualizer_scene.instantiate()
 		new_visualizer.ref_to_data = c
-		new_visualizer.global_position = GridManager.grid_to_world(GridManager.get_object_grid_pos(c)) + Vector2.UP * 20
 		c.ref_to_node.add_child(new_visualizer)
+		new_visualizer.global_position = GridManager.grid_to_world(GridManager.get_object_grid_pos(c)) - Vector2.UP * 20
 		visualizers.push_back(new_visualizer)
 	hide_command_visualizers()
 
@@ -103,11 +111,13 @@ func _next_turn(continue_if_failed := true):
 	else:
 		timer.start()
 
-
 func _on_back_button_down():
 	if not level_select_scene_path.is_empty():
 		SceneManager.goto_scene(level_select_scene_path)
 
-
 func _on_reload_button_down():
 	SceneManager.reload_scene()
+
+func _update_swap_counter():
+	if swap_counter:
+		swap_counter.text = "Swaps Left: " + str(int(swaps_allowed - 0.5 * float(TurnManager.swaps_performed)))

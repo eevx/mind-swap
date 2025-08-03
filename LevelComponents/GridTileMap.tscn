@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://nvfa0p75xuke"]
 
-[ext_resource type="TileSet" uid="uid://80ayispxf8f5" path="res://Resource/tilemap_test.tres" id="1_aboob"]
+[ext_resource type="TileSet" uid="uid://bp7vjxse70tag" path="res://Resource/tilemap.tres" id="1_805mp"]
 [ext_resource type="Script" uid="uid://v3y2sfnqtxod" path="res://grid/grid_tile_map.gd" id="2_8mqe2"]
 
 [node name="GridTileMap" type="TileMapLayer"]
 y_sort_enabled = true
-tile_set = ExtResource("1_aboob")
+tile_set = ExtResource("1_805mp")
 script = ExtResource("2_8mqe2")

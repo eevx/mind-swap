@@ -2,6 +2,8 @@ extends BaseGameObject
 class_name BaseEnemy
 
 @export var EnemyData : CharacterObjectData
+@export var player_sprite : Sprite2D
+@export var player_animated_sprite : AnimatedSprite2D
 
 func register():
 	EnemyData = EnemyData.duplicate()
@@ -9,5 +11,4 @@ func register():
 	var world_pos = global_position
 	GridManager.place_object_world(world_pos, EnemyData)
 	#TODO
-	z_index = 1
 	rotation = Vector2(EnemyData.current_dir).angle() + PI/2

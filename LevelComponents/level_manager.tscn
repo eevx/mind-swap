@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdao5x87efl8"]
+[gd_scene load_steps=6 format=3 uid="uid://bdao5x87efl8"]
 
 [ext_resource type="Script" uid="uid://clwwctrxy1ikm" path="res://LevelComponents/LevelManager.gd" id="1_yi4t7"]
 [ext_resource type="PackedScene" uid="uid://djptr1xif24sn" path="res://CharacterActions/command_visualizer.tscn" id="2_lnmxl"]
@@ -8,11 +8,15 @@
 texture = ExtResource("3_qbwit")
 region_rect = Rect2(32, 0, 32, 32)
 
-[node name="LevelManager" type="CanvasLayer" node_paths=PackedStringArray("timer")]
+[sub_resource type="LabelSettings" id="LabelSettings_qbwit"]
+font_size = 41
+
+[node name="LevelManager" type="CanvasLayer" node_paths=PackedStringArray("timer", "swap_counter")]
 script = ExtResource("1_yi4t7")
 timer = NodePath("Timer")
 command_visualizer_scene = ExtResource("2_lnmxl")
 level_select_scene_path = "res://Levels/level_select.tscn"
+swap_counter = NodePath("Label")
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -73,6 +77,14 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 46
 theme_override_styles/normal = SubResource("StyleBoxTexture_ggbey")
 text = "Reset"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 48.0
+offset_top = 432.0
+offset_right = 336.0
+offset_bottom = 489.0
+text = "Swaps Left: "
+label_settings = SubResource("LabelSettings_qbwit")
 
 [connection signal="button_down" from="HBoxContainer/scrub_left" to="." method="_on_scrub_left_button_down"]
 [connection signal="button_down" from="HBoxContainer/play_pause" to="." method="_on_play_pause_button_down"]

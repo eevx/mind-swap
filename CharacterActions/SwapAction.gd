@@ -17,6 +17,7 @@ func execute() -> bool:
 	if index >= character_data.command_array.size():
 		return false
 	character_data.command_array[index] = command_type
+	TurnManager.swaps_performed += 1
 	character_data.command_array_changed.emit()
 	return true
 
@@ -26,7 +27,7 @@ func debug_action():
 func undo():
 	character_data.command_array = duplicate_command_array
 	character_data.command_array_changed.emit()
-
+	TurnManager.swaps_performed -= 1
 #func swap_command(type : command_type, index: int):
 	#if index >= command_array.size():
 		#return

@@ -17,7 +17,7 @@ func register_tiles():
 				2:
 					cell_type = CellData.cell_type.DANGER
 				_:
-					cell_type = CellData.cell_type.DANGER
+					continue
 			var world_pos = to_global(map_to_local(tile_pos))
 			var cell = GridManager.get_cell_data_world(world_pos)
 			cell.set_type(cell_type)

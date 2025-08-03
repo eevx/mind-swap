@@ -2,11 +2,19 @@ extends Node
 # TurnManager
 
 signal all_turns_ended
+signal swap_action
 
 var _turn_character_index := 0
 var _turn_characters : Array[CharacterObjectData] = []
 var _move_index := 0
 var turn_active = false
+
+var swaps_performed := 0:
+	set(value):
+		swaps_performed = value
+		swap_action.emit()
+	
+var swaps_allowed := 2
 
 func is_turn_active() -> bool:
 	return turn_active
@@ -72,3 +80,7 @@ func end_turn():
 	_move_index = 0
 	_turn_character_index = 0
 	turn_active = false
+
+func reset():
+	end_turn()
+	swaps_performed = 0
