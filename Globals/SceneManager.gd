@@ -4,6 +4,8 @@ var _transition_active := false
 var current_scene : Node = null
 var transition_scene = preload("res://UI/scene_transition.tscn")
 
+signal scene_changed
+
 func _ready():
 	current_scene = get_tree().current_scene
 
@@ -40,6 +42,7 @@ func deferred_goto_scene(file_path : String, is_transition := true):
 		await transition.transition_finished
 	
 	_transition_active = false
+	scene_changed.emit()
 	get_tree().current_scene = current_scene
 
 func reload_scene(is_transition := true):
@@ -57,3 +60,17 @@ func add_transition(mode: int) -> SceneTransition:
 		get_tree().root.add_child(new_transition_scene)
 		return new_transition_scene
 	return null
+
+func goto_next_level(current_level : String):
+	if LevelArray.levels.has(current_level):
+		var id : int= LevelArray.levels.find(current_level)
+		if LevelArray.levels.size() > id:
+			if not LevelArray.levels[id+1].is_empty():
+				var new_level_id = id+1
+				goto_scene("res://Levels/level_complete.tscn", true)
+				await scene_changed
+				await get_tree().create_timer(1.).timeout
+				goto_scene(LevelArray.levels[new_level_id])
+				return
+	push_warning("failed to go to next level")
+	return

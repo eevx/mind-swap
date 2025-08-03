@@ -90,7 +90,9 @@ func _on_input_event(_viewport, _event, _shape_idx):
 
 func _on_mouse_entered():
 	command_sprite.frame = current_type + 5
+	scale = Vector2.ONE * 1.1
 
 
 func _on_mouse_exited():
 	update_visual(current_type)
+	scale = Vector2.ONE

@@ -9,6 +9,9 @@ class_name LevelManager
 @export var command_visualizer_scene : PackedScene
 @export var level_select_scene_path : String
 @export var swap_counter : Label
+@export var pause_texture : Texture2D
+@export var play_texture : Texture2D
+@export var pause_play_button : Button
 var visualizers : Array[CommandRowVisualizer]
 
 enum level_state {PLAY, PAUSE}
@@ -28,12 +31,20 @@ func _ready():
 
 func _process(_delta):
 	state_process()
+	check_for_win()
+
+func check_for_win():
+	var c = GridManager.get_sorted_characters()
+	if c.size() == 0:
+		pass
 
 func state_process():
 	match current_state: #state process
 		level_state.PLAY:
+			pause_play_button.icon = play_texture
 			pass
 		level_state.PAUSE:
+			pause_play_button.icon = pause_texture
 			pass
 
 func state_transition_to(new_state : level_state):

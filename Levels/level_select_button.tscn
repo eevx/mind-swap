@@ -1,10 +1,51 @@
-[gd_scene load_steps=2 format=3 uid="uid://ehc2trx33bbv"]
+[gd_scene load_steps=12 format=3 uid="uid://ehc2trx33bbv"]
 
 [ext_resource type="Script" uid="uid://dtwovh300laob" path="res://Levels/level_select_button.gd" id="1_xlus6"]
+[ext_resource type="Texture2D" uid="uid://dtxrgpirhraug" path="res://Assets/ui_level_left.png" id="2_tqotg"]
+[ext_resource type="Texture2D" uid="uid://cami3n81oqb04" path="res://Assets/ui_leveldone.png" id="3_1xxyc"]
+[ext_resource type="FontFile" uid="uid://cb5ydtoqxovuo" path="res://Assets/Jersey10-Regular.ttf" id="4_1xxyc"]
+[ext_resource type="Script" uid="uid://blrn0dk83d5bu" path="res://UI/hover_zoom.gd" id="5_ptalr"]
 
-[node name="1" type="Button"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rfgt0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1xxyc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ptalr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uphgi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ix57"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ptalr"]
+font = ExtResource("4_1xxyc")
+font_size = 44
+font_color = Color(0.26293245, 0.26293245, 0.26293245, 1)
+
+[node name="1" type="Button" node_paths=PackedStringArray("label")]
 theme_override_font_sizes/font_size = 26
-text = "LEVEL1"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rfgt0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1xxyc")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ptalr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_uphgi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4ix57")
+icon = ExtResource("2_tqotg")
 script = ExtResource("1_xlus6")
+left_texture = ExtResource("2_tqotg")
+done_texture = ExtResource("3_1xxyc")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 10.0
+offset_right = 49.0
+offset_bottom = 58.0
+text = "1"
+label_settings = SubResource("LabelSettings_ptalr")
+horizontal_alignment = 1
+
+[node name="hover_zoom" type="Node" parent="."]
+script = ExtResource("5_ptalr")
+metadata/_custom_type_script = "uid://blrn0dk83d5bu"
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]

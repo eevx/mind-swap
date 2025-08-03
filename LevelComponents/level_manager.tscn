@@ -1,97 +1,168 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdao5x87efl8"]
+[gd_scene load_steps=25 format=3 uid="uid://bdao5x87efl8"]
 
 [ext_resource type="Script" uid="uid://clwwctrxy1ikm" path="res://LevelComponents/LevelManager.gd" id="1_yi4t7"]
 [ext_resource type="PackedScene" uid="uid://djptr1xif24sn" path="res://CharacterActions/command_visualizer.tscn" id="2_lnmxl"]
-[ext_resource type="Texture2D" uid="uid://bwtskbtto7j0" path="res://Assets/tile_map_test.png" id="3_qbwit"]
+[ext_resource type="Texture2D" uid="uid://d271bb6yny0w2" path="res://Assets/ui_pause.png" id="3_clcsk"]
+[ext_resource type="Texture2D" uid="uid://bx4x6lrjqpirx" path="res://Assets/ui_play.png" id="4_1r3jd"]
+[ext_resource type="Texture2D" uid="uid://c87c3lnnq0d2d" path="res://Assets/ui_back.png" id="5_xwcqv"]
+[ext_resource type="Script" uid="uid://blrn0dk83d5bu" path="res://UI/hover_zoom.gd" id="6_6t1rr"]
+[ext_resource type="FontFile" uid="uid://cb5ydtoqxovuo" path="res://Assets/Jersey10-Regular.ttf" id="6_fonsf"]
+[ext_resource type="Texture2D" uid="uid://cu3mluje4q4a3" path="res://Assets/ui_reset.png" id="6_gecc4"]
+[ext_resource type="Texture2D" uid="uid://b1t8hhkyq8xhl" path="res://Assets/ui_backward.png" id="7_xwcqv"]
+[ext_resource type="Texture2D" uid="uid://ibtkud2cdb3t" path="res://Assets/ui_forward.png" id="8_gecc4"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ggbey"]
-texture = ExtResource("3_qbwit")
-region_rect = Rect2(32, 0, 32, 32)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yicuu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a1njc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_88scr"]
+bg_color = Color(0.15127608, 0.15127608, 0.15127605, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qmkys"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_27vj8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nt8qd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gecc4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qbwit"]
-font_size = 41
+font = ExtResource("6_fonsf")
+font_size = 56
+font_color = Color(1, 1, 0.827451, 1)
 
-[node name="LevelManager" type="CanvasLayer" node_paths=PackedStringArray("timer", "swap_counter")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fonsf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xwcqv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_88scr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6t1rr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dqdjo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b427q"]
+
+[node name="LevelManager" type="CanvasLayer" node_paths=PackedStringArray("timer", "swap_counter", "pause_play_button")]
 script = ExtResource("1_yi4t7")
 timer = NodePath("Timer")
 command_visualizer_scene = ExtResource("2_lnmxl")
 level_select_scene_path = "res://Levels/level_select.tscn"
 swap_counter = NodePath("Label")
+pause_texture = ExtResource("3_clcsk")
+play_texture = ExtResource("4_1r3jd")
+pause_play_button = NodePath("HBoxContainer/pause_play")
 
 [node name="Timer" type="Timer" parent="."]
-
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 32.0
-offset_top = -136.0
-offset_right = 596.0
-offset_bottom = -39.755005
-grow_vertical = 0
-
-[node name="scrub_left" type="Button" parent="HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 21
-theme_override_styles/normal = SubResource("StyleBoxTexture_ggbey")
-text = "scrub left"
-
-[node name="HSeparator" type="HSeparator" parent="HBoxContainer"]
-custom_minimum_size = Vector2(28.725, 0)
-layout_mode = 2
-
-[node name="play_pause" type="Button" parent="HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 21
-theme_override_styles/normal = SubResource("StyleBoxTexture_ggbey")
-text = "play/pause"
-
-[node name="HSeparator2" type="HSeparator" parent="HBoxContainer"]
-custom_minimum_size = Vector2(28.725, 0)
-layout_mode = 2
-
-[node name="scrub_right" type="Button" parent="HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 21
-theme_override_styles/normal = SubResource("StyleBoxTexture_ggbey")
-text = "scrub right"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = 48.0
 offset_top = 48.0
 offset_right = 112.0
 offset_bottom = 151.0
+scale = Vector2(1.21, 1.21)
 
 [node name="Back" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 46
-theme_override_styles/normal = SubResource("StyleBoxTexture_ggbey")
-text = "Back"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yicuu")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_a1njc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_88scr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_qmkys")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_27vj8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nt8qd")
+icon = ExtResource("5_xwcqv")
 
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 19.605)
+[node name="hover_zoom" type="Node" parent="VBoxContainer/Back"]
+script = ExtResource("6_6t1rr")
+metadata/_custom_type_script = "uid://blrn0dk83d5bu"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 9
+theme_override_styles/separator = SubResource("StyleBoxEmpty_gecc4")
 
 [node name="Reload" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 46
-theme_override_styles/normal = SubResource("StyleBoxTexture_ggbey")
-text = "Reset"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yicuu")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_a1njc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_88scr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_qmkys")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_27vj8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nt8qd")
+icon = ExtResource("6_gecc4")
+
+[node name="hover_zoom" type="Node" parent="VBoxContainer/Reload"]
+script = ExtResource("6_6t1rr")
+metadata/_custom_type_script = "uid://blrn0dk83d5bu"
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 32.0
-offset_top = -244.0
-offset_right = 320.0
-offset_bottom = -187.0
+offset_left = 48.0
+offset_top = -228.0
+offset_right = 336.0
+offset_bottom = -168.0
 grow_vertical = 0
 text = "Swaps Left: "
 label_settings = SubResource("LabelSettings_qbwit")
 
-[connection signal="button_down" from="HBoxContainer/scrub_left" to="." method="_on_scrub_left_button_down"]
-[connection signal="button_down" from="HBoxContainer/play_pause" to="." method="_on_play_pause_button_down"]
-[connection signal="button_down" from="HBoxContainer/scrub_right" to="." method="_on_scrub_right_button_down"]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -148.0
+offset_right = 243.0
+offset_bottom = -76.0
+grow_vertical = 0
+scale = Vector2(1.72, 1.72)
+
+[node name="undo" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fonsf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xwcqv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_88scr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_6t1rr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_dqdjo")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b427q")
+icon = ExtResource("7_xwcqv")
+
+[node name="hover_zoom" type="Node" parent="HBoxContainer/undo"]
+script = ExtResource("6_6t1rr")
+metadata/_custom_type_script = "uid://blrn0dk83d5bu"
+
+[node name="pause_play" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fonsf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xwcqv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_88scr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_6t1rr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_dqdjo")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b427q")
+icon = ExtResource("3_clcsk")
+
+[node name="hover_zoom" type="Node" parent="HBoxContainer/pause_play"]
+script = ExtResource("6_6t1rr")
+metadata/_custom_type_script = "uid://blrn0dk83d5bu"
+
+[node name="forward" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fonsf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xwcqv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_88scr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_6t1rr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_dqdjo")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b427q")
+icon = ExtResource("8_gecc4")
+
+[node name="hover_zoom" type="Node" parent="HBoxContainer/forward"]
+script = ExtResource("6_6t1rr")
+metadata/_custom_type_script = "uid://blrn0dk83d5bu"
+
 [connection signal="button_down" from="VBoxContainer/Back" to="." method="_on_back_button_down"]
 [connection signal="button_down" from="VBoxContainer/Reload" to="." method="_on_reload_button_down"]
+[connection signal="button_down" from="HBoxContainer/undo" to="." method="_on_scrub_left_button_down"]
+[connection signal="button_down" from="HBoxContainer/pause_play" to="." method="_on_play_pause_button_down"]
+[connection signal="button_down" from="HBoxContainer/forward" to="." method="_on_scrub_right_button_down"]
