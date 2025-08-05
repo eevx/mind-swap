@@ -1,3 +1,27 @@
-[gd_scene format=3 uid="uid://cjka5nbocrc33"]
+[gd_scene load_steps=3 format=3 uid="uid://cjka5nbocrc33"]
+
+[ext_resource type="Script" uid="uid://c1mq24j7ufyu0" path="res://Globals/level_camera.gd" id="1_bnwk5"]
+
+[sub_resource type="Environment" id="Environment_bf7pi"]
+background_mode = 3
+tonemap_mode = 3
+tonemap_exposure = 0.9
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.34
+glow_strength = 1.11
+glow_bloom = 0.01
+glow_blend_mode = 1
+glow_hdr_threshold = 0.24
+adjustment_enabled = true
+adjustment_brightness = 0.9
+adjustment_saturation = 1.1
 
 [node name="LevelCamera" type="Camera2D"]
+script = ExtResource("1_bnwk5")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.93094295, 0.86944836, 0.8764615, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bf7pi")

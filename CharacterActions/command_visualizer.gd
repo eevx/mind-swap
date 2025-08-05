@@ -48,13 +48,17 @@ func update_visuals():
 		i += 1
 
 func enable():
-	visible = true
+	#visible = true
+	line.show()
+	modulate = Color(1, 1, 1, 1)
 	for child in get_children():
 		if child is ClickableModule:
 			child.collision_layer = 1
 
 func disable():
-	visible = false
+	#visible = false
+	line.hide()
+	modulate = Color(1, 1, 1, 0.4)
 	for child in get_children():
 		if child is ClickableModule:
 			child.collision_layer = 0

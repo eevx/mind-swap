@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://rdgy113s1ybt"]
+[gd_scene load_steps=11 format=4 uid="uid://rdgy113s1ybt"]
 
 [ext_resource type="PackedScene" uid="uid://bdao5x87efl8" path="res://LevelComponents/level_manager.tscn" id="1_40kce"]
 [ext_resource type="PackedScene" uid="uid://nvfa0p75xuke" path="res://LevelComponents/GridTileMap.tscn" id="2_0wnuc"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bah1h38kcvyvw" path="res://GameObjectsAndData/CharacterObjectData.gd" id="4_ud7fb"]
 [ext_resource type="PackedScene" uid="uid://dohbj78a6y1gy" path="res://LevelComponents/moveable_laser_box.tscn" id="5_40kce"]
 [ext_resource type="PackedScene" uid="uid://dvpa68x3mel0d" path="res://LevelComponents/moveable_box.tscn" id="6_0wnuc"]
+[ext_resource type="Shader" uid="uid://dxpw7ucc86w1p" path="res://Assets/bg.gdshader" id="7_u2kym"]
 
 [sub_resource type="Resource" id="Resource_40kce"]
 script = ExtResource("4_ud7fb")
@@ -20,6 +21,13 @@ current_dir = Vector2i(0, -1)
 turn_order = 1
 metadata/_custom_type_script = "uid://bah1h38kcvyvw"
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ud7fb"]
+shader = ExtResource("7_u2kym")
+shader_parameter/background_color = Color(0, 0, 0, 1)
+shader_parameter/foreground_color = Color(0.9647059, 0.69411767, 0.5921569, 1)
+shader_parameter/grid_size = 26.90000040084228
+shader_parameter/dot_size = 0.01999999955296
+
 [node name="level_d5" type="Node2D"]
 y_sort_enabled = true
 
@@ -32,9 +40,7 @@ tile_map_data = PackedByteArray("AAADAP//AAAHAAAAAAACAP3/AAAHAAAAAAABAAIAAAAHAAA
 
 [node name="WallTile" parent="." instance=ExtResource("2_0wnuc")]
 position = Vector2(0, -32)
-tile_map_data = PackedByteArray("AAD9//z/AAAAAAUAAAD+//z/AAAAAAUAAAD///z/AAAAAAUAAAAAAPz/AAAAAAUAAAABAPz/AAAAAAUAAAACAPz/AAAAAAUAAAADAPz/AAAAAAUAAAD9/wQAAAAAAAUAAAD+/wQAAAAAAAUAAAACAAQAAAAAAAUAAAADAAQAAAAAAAUAAAD9/wUAAAAHAAUAAAD+/wUAAAAHAAUAAAACAAUAAAAHAAUAAAADAAUAAAAHAAUAAAD8/wUAAAAEAAUAAAACAP3/AAAHAAUAAAAAAP3/AAAHAAUAAAD///3/AAAHAAUAAAADAP3/AAAHAAUAAAD8//z/AAAAAAUAAAD8/wQAAAAAAAUAAAD8//3/AAAHAAUAAAD//wQAAAAAAAUAAAAAAAQAAAAAAAUAAAABAAQAAAAAAAUAAAD//wUAAAAHAAUAAAAAAAUAAAAHAAUAAAABAAUAAAAHAAUAAAD9//3/AAAHAAUAAAD+//3/AAAHAAUAAAABAP3/AAAHAAUAAAD7//3/AAAFAAYAAAD7//7/AAAFAAYAAAD7////AAAFAAYAAAD7/wAAAAAFAAYAAAD7/wEAAAAFAAYAAAD7/wIAAAAFAAYAAAD7/wMAAAAFAAYAAAAEAP3/AAAFAAYAAAAEAP7/AAAFAAYAAAAEAP//AAAFAAYAAAAEAAAAAAAFAAYAAAAEAAEAAAAFAAYAAAAEAAIAAAAFAAYAAAAEAAMAAAAFAAYAAAA=")
-
-[node name="Camera2D" type="Camera2D" parent="."]
+tile_map_data = PackedByteArray("AAD9//z/AAAAAAUAAAD+//z/AAAAAAUAAAD///z/AAAAAAUAAAAAAPz/AAAAAAUAAAABAPz/AAAAAAUAAAACAPz/AAAAAAUAAAADAPz/AAAAAAUAAAD9/wQAAAAAAAUAAAD+/wQAAAAAAAUAAAACAAQAAAAAAAUAAAADAAQAAAAAAAUAAAD9/wUAAAAHAAUAAAD+/wUAAAAHAAUAAAACAAUAAAAHAAUAAAADAAUAAAAHAAUAAAD8/wUAAAAHAAUAAAACAP3/AAAHAAUAAAAAAP3/AAAHAAUAAAD///3/AAAHAAUAAAADAP3/AAAHAAUAAAD8//z/AAAAAAUAAAD8/wQAAAAAAAUAAAD8//3/AAAHAAUAAAD//wQAAAAAAAUAAAAAAAQAAAAAAAUAAAABAAQAAAAAAAUAAAD//wUAAAAHAAUAAAAAAAUAAAAHAAUAAAABAAUAAAAHAAUAAAD9//3/AAAHAAUAAAD+//3/AAAHAAUAAAABAP3/AAAHAAUAAAD7//3/AAAFAAYAAAD7//7/AAAFAAYAAAD7////AAAFAAYAAAD7/wAAAAAFAAYAAAD7/wEAAAAFAAYAAAD7/wIAAAAFAAYAAAD7/wMAAAAFAAYAAAAEAP3/AAAFAAYAAAAEAP7/AAAFAAYAAAAEAP//AAAFAAYAAAAEAAAAAAAFAAYAAAAEAAEAAAAFAAYAAAAEAAIAAAAFAAYAAAAEAAMAAAAFAAYAAAD7/wQAAAADAAYAAAAEAAQAAAACAAYAAAAEAPz/AAAGAAQAAAD7//z/AAAEAAQAAAD7/wUAAAAHAAYAABAEAAUAAAAHAAYAAAA=")
 
 [node name="BaseEnemy" parent="." instance=ExtResource("3_u2kym")]
 position = Vector2(-32, -160)
@@ -49,3 +55,12 @@ position = Vector2(-32, 32)
 
 [node name="MoveableBox" parent="." instance=ExtResource("6_0wnuc")]
 position = Vector2(-32, -96)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -3
+material = SubResource("ShaderMaterial_ud7fb")
+offset_left = -1344.0
+offset_top = -800.0
+offset_right = 1600.0
+offset_bottom = 1024.0
+mouse_filter = 2

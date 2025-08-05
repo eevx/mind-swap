@@ -33,17 +33,17 @@ func execute():
 	GridManager.place_object(to_pos, object_data)
 	
 	update_visual(from_pos, to_pos)
-	apply_cell_effect(to_pos)
+	#apply_cell_effect(to_pos)
 	return true
 
-func apply_cell_effect(pos):
-	var cell_data : CellData = GridManager.get_cell_data(pos)
-	var action : Action
-	if cell_data:
-		if cell_data.get_type() == cell_data.cell_type.DANGER:
-			action = DropAction.new(object_data, pos)
-	if action:
-		TurnManager.execute_action(action)
+#func apply_cell_effect(pos):
+	#var cell_data : CellData = GridManager.get_cell_data(pos)
+	#var action : Action
+	#if cell_data:
+		#if cell_data.get_type() == cell_data.cell_type.DANGER:
+			#action = DropAction.new(object_data, pos)
+	#if action:
+		#TurnManager.execute_action(action)
 
 func update_visual(from: Vector2i, to: Vector2i):
 	if object_data.ref_to_node:

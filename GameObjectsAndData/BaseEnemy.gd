@@ -5,8 +5,21 @@ class_name BaseEnemy
 @export var player_sprite : Sprite2D
 @export var player_animated_sprite : AnimatedSprite2D
 @export var shoot_scene : PackedScene
+@export var indicator : Node2D
 
 var animation_tween : Tween
+
+func _process(_delta: float) -> void:
+	set_indicator()
+
+func set_indicator():
+	if not indicator:
+		return
+	if TurnManager._turn_characters.size() > 0 and TurnManager._turn_character_index < TurnManager._turn_characters.size():
+		if TurnManager._turn_characters[TurnManager._turn_character_index].ref_to_node == self:
+			indicator.show()
+		else:
+			indicator.hide()
 
 func register():
 	EnemyData = EnemyData.duplicate()
@@ -61,8 +74,8 @@ func _move_animation(from_pos : Vector2i, to_pos : Vector2i):
 	
 	global_position = from
 	animation_tween = create_tween()
-	animation_tween.tween_property(self, "global_position", to, GlobalVariables.ANIMATION_TIME_STEP)
-	animation_tween.tween_callback(func(): animation_done())
+	animation_tween.tween_property(self, "global_position", to, GlobalVariables.ANIMATION_TIME_STEP).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
+	animation_tween.set_parallel(false).tween_callback(func(): animation_done())
 
 func _death_animation(is_show: bool):
 	player_animated_sprite.show()
@@ -97,7 +110,6 @@ func _shoot_animation(from_pos : Vector2i, to_pos : Vector2i):
 	if animation_tween:
 		animation_tween.kill()
 	
-	var dir = to_pos - from_pos
 	if shoot_scene.can_instantiate():
 		var new_shoot_scene : ShootBurst = shoot_scene.instantiate()
 		var start = GridManager.grid_to_world(from_pos)

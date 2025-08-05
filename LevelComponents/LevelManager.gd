@@ -34,6 +34,7 @@ func _process(_delta):
 	state_process()
 
 func check_for_win():
+	await get_tree().process_frame
 	var c = GridManager.get_sorted_characters()
 	if c.size() == 0:
 		GlobalVariables.completed_levels.push_back(SceneManager.current_scene.scene_file_path)
@@ -117,6 +118,7 @@ func _next_turn(continue_if_failed := false):
 		TurnManager.start_new_turn()
 	
 	var turn_success := TurnManager.advance_turn()
+	
 	if not turn_success and continue_if_failed:
 		await get_tree().create_timer(GlobalVariables.TIME_STEP).timeout
 		_next_turn()
@@ -133,7 +135,7 @@ func _on_reload_button_down():
 
 func _update_swap_counter():
 	if swap_counter:
-		swap_counter.text = "Swaps Left: " + str(int(swaps_allowed - 0.5 * float(TurnManager.swaps_performed)))
+		swap_counter.text = "Swaps Left: " + str(int(swaps_allowed - TurnManager.swaps_performed))
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("space") and not event.is_echo():

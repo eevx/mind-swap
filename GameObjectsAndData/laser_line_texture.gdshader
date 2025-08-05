@@ -11,5 +11,5 @@ void fragment() {
 
 	vec2 uv = vec2(fract(UV.x * tile_scale + offset), UV.y);
 	vec4 texcol = texture(line_tex, uv);
-	COLOR = texcol * tint;
+	COLOR = texcol * tint * 1.2;
 }

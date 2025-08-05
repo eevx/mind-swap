@@ -10,7 +10,6 @@
 script = ExtResource("4_s3g36")
 command_array = Array[int]([0])
 current_dir = Vector2i(0, 1)
-turn_order = 1
 metadata/_custom_type_script = "uid://bah1h38kcvyvw"
 
 [sub_resource type="Resource" id="Resource_viwe1"]
@@ -23,6 +22,7 @@ metadata/_custom_type_script = "uid://bah1h38kcvyvw"
 [sub_resource type="Resource" id="Resource_nhm3o"]
 script = ExtResource("4_s3g36")
 command_array = Array[int]([4, 0])
+turn_order = 1
 metadata/_custom_type_script = "uid://bah1h38kcvyvw"
 
 [node name="level_d4" type="Node2D"]
@@ -38,8 +38,6 @@ tile_map_data = PackedByteArray("AAD9//3/AAAHAAAAAAD8//3/AAAHAAAAAAADAAEAAAAHAAA
 [node name="WallTile" parent="." instance=ExtResource("2_viwe1")]
 position = Vector2(0, -32)
 tile_map_data = PackedByteArray("AAAEAAEAAAAFAAYAAAD9//z/AAAAAAUAAAD+//z/AAAAAAUAAAD///z/AAAAAAUAAAAAAPz/AAAAAAUAAAABAPz/AAAAAAUAAAACAPz/AAAAAAUAAAADAPz/AAAAAAUAAAAEAPz/AAAGAAQAAAAEAP3/AAAFAAYAAAAEAP7/AAAFAAYAAAAEAAQAAAACAAYAAAACAAQAAAAAAAUAAAADAAQAAAAAAAUAAAAEAAIAAAAFAAYAAAAEAAMAAAAFAAYAAAAEAP//AAAFAAYAAAD9/wUAAAAHAAUAAAD+/wUAAAAHAAUAAAACAAUAAAAHAAUAAAADAAUAAAAHAAUAAAAEAAUAAAAHAAYAAAD8/wUAAAAEAAUAAAACAP3/AAAHAAUAAAABAP3/AAAHAAUAAAAAAP3/AAAHAAUAAAD///3/AAAHAAUAAAD+//3/AAAHAAUAAAD9//3/AAAHAAUAAAADAP3/AAAHAAUAAAAEAAAAAAAFAAYAAAD7//3/AAAFAAYAAAD7//7/AAAFAAYAAAD7////AAAFAAYAAAD7/wAAAAAFAAYAAAD7/wEAAAAFAAYAAAD7/wIAAAAFAAYAAAD7/wMAAAAFAAYAAAD7/wQAAAADAAYAAAD7//z/AAAEAAQAAAD8//z/AAAAAAUAAAD8/wQAAAAAAAUAAAD8//3/AAAHAAUAAAD7/wUAAAAHAAYAABD+/wQAAAAAAAUAAAD9/wQAAAAAAAUAAAD//wQAAAAAAAUAAAAAAAQAAAAAAAUAAAABAAQAAAAAAAUAAAD//wUAAAAHAAUAAAAAAAUAAAAHAAUAAAABAAUAAAAHAAUAAAA=")
-
-[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="BaseEnemy" parent="." instance=ExtResource("3_nhm3o")]
 position = Vector2(-32, -160)

@@ -17,12 +17,8 @@ func _ready():
 	for character_data in get_sorted_characters():
 		print(character_data.turn_order)
 
-#func _process(_delta):
-	#if Input.is_action_just_pressed("left_click"):
-		#var pos = world_to_grid(get_tree().current_scene.get_global_mouse_position())
-		#print(get_cell_data(pos).cell_type.find_key(get_cell_data(pos).get_type()))
-		#if get_cell_data(pos).get_occupant():
-			#print(get_cell_data(pos).get_occupant().ref_to_node)
+func _process(_delta):
+	debug_on_click()
 	##if Input.is_action_just_pressed("ui_right"):
 		#TurnManager.start_new_turn()
 		#TurnManager.advance_turn()
@@ -36,6 +32,15 @@ func _ready():
 			#visualizer_scene.global_position = grid_to_world(get_object_grid_pos(c)) + Vector2.UP * 10
 
 # Helpers
+func debug_on_click():
+	if Input.is_action_just_pressed("left_click"):
+		if not get_tree().current_scene is Node2D:
+			return
+		var pos = world_to_grid(get_tree().current_scene.get_global_mouse_position())
+		print(get_cell_data(pos).cell_type.find_key(get_cell_data(pos).get_type()))
+		if get_cell_data(pos).get_occupant():
+			print(get_cell_data(pos).get_occupant().ref_to_node)
+
 func debug_print_all_cells() -> void:
 	for chunk_key in chunks.keys():
 		var chunk = chunks[chunk_key]

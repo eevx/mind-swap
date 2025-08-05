@@ -18,6 +18,7 @@ func update_visual(show_value: bool):
 		if object_data.ref_to_node.has_method("queue_animation"):
 			object_data.ref_to_node.queue_animation("death", [show_value])
 			SfxManager.play_sfx("death", -5.)
+			LevelCamera.camera_shake()
 	#if object_data.ref_to_node:
 		#object_data.ref_to_node.visible = show_value
 

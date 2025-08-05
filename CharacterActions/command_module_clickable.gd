@@ -53,13 +53,16 @@ func _unhandled_input(event):
 		_clicked = false
 		var swap_attempt = get_overlapping_clickable()
 		if swap_attempt:
-			var temp_command_type = owner_data.command_array[index_in_array]
+			#var temp_command_type = owner_data.command_array[index_in_array]
 			#owner_data.swap_command(swap_attempt.owner_data.command_array[swap_attempt.index_in_array], index_in_array)
 			#swap_attempt.owner_data.swap_command(temp_command_type, swap_attempt.index_in_array)
-			var swap_action_1 : Action = SwapAction.new(owner_data, swap_attempt.owner_data.command_array[swap_attempt.index_in_array], index_in_array)
-			var swap_action_2 : Action = SwapAction.new(swap_attempt.owner_data, temp_command_type, swap_attempt.index_in_array)
-			TurnManager.execute_action(swap_action_1)
-			TurnManager.execute_action(swap_action_2)
+			var swap_action : Action = SwapAction.new(\
+			owner_data, swap_attempt.owner_data.command_array[swap_attempt.index_in_array], index_in_array,\
+			swap_attempt.owner_data, owner_data.command_array[index_in_array], swap_attempt.index_in_array
+			)
+			#var swap_action_2 : Action = SwapAction.new(swap_attempt.owner_data, temp_command_type, swap_attempt.index_in_array)
+			#TurnManager.execute_action(swap_action_1)
+			TurnManager.execute_action(swap_action)
 		reset()
 
 func reset():
@@ -80,7 +83,7 @@ func get_overlapping_clickable() -> ClickableModule:
 
 func _on_input_event(_viewport, _event, _shape_idx):
 	if Input.is_action_just_pressed("left_click"):
-		if TurnManager.swaps_performed >= 2 * TurnManager.swaps_allowed:
+		if TurnManager.swaps_performed >= TurnManager.swaps_allowed:
 			SfxManager.play_sfx("error")
 			return
 		SfxManager.play_sfx("hover", -7.)

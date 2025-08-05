@@ -20,6 +20,7 @@ func undo_last_action():
 	if undo_stack.size() == 0:
 		return
 	var last_action_array : Array = undo_stack.pop_back()
+	last_action_array.reverse() # for undo, go backwards through recorded actions
 	
 	var skip_pos : Dictionary = {}
 	for data in last_action_array:

@@ -444,12 +444,14 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="BaseEnemy" type="Node2D" node_paths=PackedStringArray("player_sprite", "player_animated_sprite")]
+[node name="BaseEnemy" type="Node2D" node_paths=PackedStringArray("player_sprite", "player_animated_sprite", "indicator")]
+modulate = Color(1.0954857, 1.0954857, 1.0954857, 1)
 script = ExtResource("1_2lwar")
 EnemyData = SubResource("Resource_f7tjn")
 player_sprite = NodePath("Sprite2D")
 player_animated_sprite = NodePath("AnimatedSprite2D")
 shoot_scene = ExtResource("3_sudjx")
+indicator = NodePath("")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -5)
@@ -458,7 +460,7 @@ texture = ExtResource("3_o4whs")
 hframes = 8
 vframes = 2
 region_enabled = true
-region_rect = Rect2(0, 448, 512, 128)
+region_rect = Rect2(0, 449, 512, 127)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
