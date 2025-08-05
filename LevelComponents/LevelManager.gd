@@ -35,6 +35,7 @@ func _process(_delta):
 
 func check_for_win():
 	await get_tree().process_frame
+	await get_tree().process_frame
 	var c = GridManager.get_sorted_characters()
 	if c.size() == 0:
 		GlobalVariables.completed_levels.push_back(SceneManager.current_scene.scene_file_path)

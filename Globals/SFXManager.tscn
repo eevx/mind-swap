@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dayud51rwvpbv"]
+[gd_scene load_steps=15 format=3 uid="uid://dayud51rwvpbv"]
 
 [ext_resource type="Script" uid="uid://5us4bvu66fxc" path="res://Globals/sfx_manager.gd" id="1_6nkip"]
 [ext_resource type="AudioStream" uid="uid://dlkcmov03gvep" path="res://Assets/Sfx/gridMove.wav" id="2_swsjg"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://b8j3omkibk3iw" path="res://Assets/Sfx/box_drop.mp3" id="10_froaa"]
 [ext_resource type="AudioStream" uid="uid://b37x1frtxkj8m" path="res://Assets/Sfx/swap_sfx.mp3" id="11_ty3ma"]
 [ext_resource type="AudioStream" uid="uid://csx0lg8bdgq6n" path="res://Assets/Sfx/error-call-to-attention-129258.mp3" id="12_3bsla"]
+[ext_resource type="AudioStream" uid="uid://dynq133mg6s8w" path="res://Assets/Sfx/enemy_die.wav" id="13_vyoi5"]
 
 [node name="SfxManager" type="Node2D"]
 script = ExtResource("1_6nkip")
@@ -21,6 +22,7 @@ sfx_dict = Dictionary[String, AudioStream]({
 "click": ExtResource("4_mlllv"),
 "death": ExtResource("5_v4h1o"),
 "drop": ExtResource("10_froaa"),
+"enemy_die": ExtResource("13_vyoi5"),
 "error": ExtResource("12_3bsla"),
 "hover": ExtResource("9_3bsla"),
 "level_win": ExtResource("8_ty3ma"),

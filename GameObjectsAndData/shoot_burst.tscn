@@ -36,6 +36,7 @@ line_texture = NodePath("Line2D")
 particles = NodePath("CPUParticles2D")
 
 [node name="Line2D" type="Line2D" parent="."]
+modulate = Color(1.5720325, 1.5720325, 1.5720325, 1)
 material = SubResource("ShaderMaterial_dash5")
 points = PackedVector2Array(0, 0, 127, 0)
 width = 32.8
@@ -43,6 +44,7 @@ width_curve = SubResource("Curve_amorn")
 texture_mode = 1
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color(1.5720325, 1.5720325, 1.5720325, 1)
 z_index = 2
 material = SubResource("CanvasItemMaterial_dash5")
 position = Vector2(126, 1)

@@ -8,6 +8,12 @@ var shake_tween : Tween
 func _ready() -> void:
 	_init_transform = transform
 
+func _process(_delta):
+	var screen_space_mouse_pos : Vector2 = get_viewport().get_mouse_position()
+	screen_space_mouse_pos /= get_viewport_rect().size
+	screen_space_mouse_pos = screen_space_mouse_pos.clamp(Vector2(0, 0), Vector2(1, 1))
+	RenderingServer.global_shader_parameter_set("mouse_pos", screen_space_mouse_pos)
+
 func camera_shake(time := 0.5, strength := 0.5):
 	strength = clamp(strength, 0 , 1.)
 	if shake_tween:

@@ -15,8 +15,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a1njc"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_88scr"]
-bg_color = Color(0.15127608, 0.15127608, 0.15127605, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ih56"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qmkys"]
 
@@ -68,7 +67,7 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 46
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yicuu")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_a1njc")
-theme_override_styles/hover = SubResource("StyleBoxFlat_88scr")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7ih56")
 theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_qmkys")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_27vj8")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_nt8qd")
@@ -88,7 +87,7 @@ layout_mode = 2
 focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yicuu")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_a1njc")
-theme_override_styles/hover = SubResource("StyleBoxFlat_88scr")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7ih56")
 theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_qmkys")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_27vj8")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_nt8qd")

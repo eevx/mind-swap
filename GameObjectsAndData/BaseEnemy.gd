@@ -112,10 +112,11 @@ func _shoot_animation(from_pos : Vector2i, to_pos : Vector2i):
 	
 	if shoot_scene.can_instantiate():
 		var new_shoot_scene : ShootBurst = shoot_scene.instantiate()
+		var dir = Vector2(to_pos - from_pos).normalized()
 		var start = GridManager.grid_to_world(from_pos)
 		var end = GridManager.grid_to_world(to_pos)
 		new_shoot_scene.start_pos = start + EnemyData.current_dir * GlobalVariables.GRID_CELL_SIZE/2.
-		new_shoot_scene.end_pos = end + Vector2i.UP * GlobalVariables.GRID_CELL_SIZE/2.
+		new_shoot_scene.end_pos = end + Vector2i.UP * GlobalVariables.GRID_CELL_SIZE/2. - dir * Vector2(GlobalVariables.GRID_CELL_SIZE/2.)
 		new_shoot_scene.time = GlobalVariables.ANIMATION_TIME_STEP
 		add_child(new_shoot_scene)
 		

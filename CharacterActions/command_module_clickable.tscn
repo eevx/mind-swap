@@ -37,10 +37,10 @@ tracks/0/path = NodePath("Sprite2D2:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.96666664),
+"times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(0.5, 2, 1),
 "update": 0,
-"values": [Vector2(0, -51), Vector2(0, -60), Vector2(0, -51)]
+"values": [Vector2(0, -70), Vector2(0, -63), Vector2(0, -70)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_srfp8"]
@@ -58,6 +58,7 @@ indicator_sprite = NodePath("Sprite2D2")
 shape = SubResource("RectangleShape2D_6efe4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.9102078, 0.9102078, 0.9102078, 1)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_idfbw")
 hframes = 5
@@ -66,7 +67,6 @@ region_enabled = true
 region_rect = Rect2(64, 0, 320, 128)
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(0, -51)
 texture = ExtResource("2_jlsrn")
 region_enabled = true

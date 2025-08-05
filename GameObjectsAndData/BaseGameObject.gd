@@ -40,14 +40,14 @@ func _play_next():
 	_play_animation(next)
 
 func _play_animation(anim_data: Dictionary):
-	var name = anim_data.name
+	var animation_name = anim_data.name
 	var args = anim_data.args
-	var callable = _animation_library.get(name)
+	var callable = _animation_library.get(animation_name)
 	if callable:
 		_is_playing = true
 		callable.call(args)
 	else:
-		push_warning("Unknown animation: %s" % name)
+		push_warning("Unknown animation: " + animation_name)
 		_play_next()
 
 func animation_done():
