@@ -47,6 +47,7 @@ position = Vector2(32, -96)
 EnemyData = SubResource("Resource_lic31")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -720.0
 offset_top = -155.0
 offset_right = -313.0
@@ -60,18 +61,17 @@ label_settings = SubResource("LabelSettings_wnc21")
 autowrap_mode = 2
 
 [node name="Label2" type="RichTextLabel" parent="."]
-visible = false
-offset_left = -720.0
-offset_top = -155.0
-offset_right = -313.0
-offset_bottom = 155.0
+offset_left = -704.0
+offset_top = -128.0
+offset_right = -320.0
+offset_bottom = 192.0
 theme_override_fonts/normal_font = ExtResource("5_6xcu2")
-theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
-text = "[shake rate =1 level =1 connected= 0]Pause to see commands.
+text = "[wave]Pause to see commands.
 
-Swap commands to make them all disappear!
+Swap commands (click and drag) to exterminate them all!
 
 Seek forward or backward with the buttons below!"
+scroll_active = false
 autowrap_mode = 2
-horizontal_alignment = 1

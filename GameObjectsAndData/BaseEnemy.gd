@@ -36,7 +36,7 @@ func register_animations():
 	}
 	queue_animation("turn", [Vector2i(1, 0), EnemyData.current_dir])
 
-func _turn_animation(from_dir : Vector2i, to_dir : Vector2i):
+func _turn_animation(from_dir: Vector2i, to_dir: Vector2i):
 	player_sprite.show()
 	player_animated_sprite.hide()
 	if animation_tween:
@@ -45,22 +45,28 @@ func _turn_animation(from_dir : Vector2i, to_dir : Vector2i):
 	var get_custom_angle = func(vec: Vector2) -> float:
 		if vec == Vector2.ZERO:
 			return 0.0
-		var angle = vec.angle()  # CCW from RIGHT (0 rad)
-		angle = fmod(-angle + PI/2 + TAU, TAU)  # Flip to CW and shift so DOWN is 0
+		var angle = vec.angle()
+		angle = fmod(-angle + PI/2 + TAU, TAU)
 		return angle
 
+	var total_frames := 12
+	var from_frame := int(round(total_frames * get_custom_angle.call(Vector2(from_dir)) / TAU)) % total_frames
+	var to_frame := int(round(total_frames * get_custom_angle.call(Vector2(to_dir)) / TAU)) % total_frames
 
-	
-	var from_angle = (get_custom_angle.call(Vector2(from_dir)))
-	var to_angle = (get_custom_angle.call(Vector2(to_dir)))
-	
-	var from_frame = int(round(12 * from_angle / (2*PI))) % 12
-	var to_frame = int(round(12 * to_angle / (2*PI))) % 12
-	
-	player_sprite.frame = from_frame
+	var diff := (to_frame - from_frame + total_frames) % total_frames
+	if diff > float(total_frames) / 2:
+		diff -= total_frames 
+
+	var target_frame_unwrapped := from_frame + diff
+
 	animation_tween = create_tween()
-	animation_tween.tween_property(player_sprite, "frame", to_frame, GlobalVariables.ANIMATION_TIME_STEP)
+	animation_tween.tween_method(
+		func(value):
+			player_sprite.frame = (int(round(value)) + total_frames) % total_frames
+	, from_frame, target_frame_unwrapped, abs(diff) * (GlobalVariables.ANIMATION_TIME_STEP / max(1, abs(diff))))
+	
 	animation_tween.tween_callback(func(): animation_done())
+
 
 func _move_animation(from_pos : Vector2i, to_pos : Vector2i):
 	player_sprite.show()

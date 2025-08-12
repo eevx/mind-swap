@@ -5,7 +5,6 @@ class_name LevelManager
 @export var swaps_allowed := 2
 
 @export_category("DON'T CHANGE")
-@export var timer : Timer
 @export var command_visualizer_scene : PackedScene
 @export var level_select_scene_path : String
 @export var swap_counter : Label
@@ -19,15 +18,17 @@ var current_state : level_state
 
 func _ready():
 	show()
-	timer.wait_time = GlobalVariables.TIME_STEP
-	timer.timeout.connect(_next_turn)
+	MusicManager.play_theme("level theme")
+	MusicManager.beat.connect(_next_turn)
 	TurnManager.turn_ended.connect(check_for_win)
 	
 	await get_tree().process_frame
+	
 	setup_command_visualizers()
 	TurnManager.swaps_allowed = swaps_allowed
 	TurnManager.swap_action.connect(_update_swap_counter)
 	_update_swap_counter()
+	
 	state_transition_to(level_state.PLAY)
 
 func _process(_delta):
@@ -44,10 +45,8 @@ func check_for_win():
 func state_process():
 	match current_state: #state process
 		level_state.PLAY:
-			pause_play_button.icon = pause_texture
 			pass
 		level_state.PAUSE:
-			pause_play_button.icon = play_texture
 			pass
 
 func state_transition_to(new_state : level_state):
@@ -59,13 +58,13 @@ func state_transition_to(new_state : level_state):
 	
 	match new_state: #state enter
 		level_state.PLAY:
-			timer.start()
 			hide_command_visualizers()
-			pass
+			pause_play_button.icon = pause_texture
+			MusicManager.resume_theme()
 		level_state.PAUSE:
-			timer.stop()
 			show_command_visualizers()
-			pass
+			pause_play_button.icon = play_texture
+			MusicManager.pause_theme()
 	current_state = new_state
 
 func setup_command_visualizers():
@@ -89,10 +88,7 @@ func hide_command_visualizers():
 		v.disable()
 
 func _on_scrub_left_button_down():
-	if current_state != level_state.PAUSE:
-		state_transition_to(level_state.PAUSE)
-	show_command_visualizers()
-	ActionHistory.undo_last_action()
+	back_action()
 
 func _on_play_pause_button_down():
 	match current_state: 
@@ -102,29 +98,18 @@ func _on_play_pause_button_down():
 			state_transition_to(level_state.PLAY)
 
 func _on_scrub_right_button_down():
-	if current_state != level_state.PAUSE:
-		state_transition_to(level_state.PAUSE)
-	show_command_visualizers()
+	forward_action()
+
+func _next_turn():
+	if not current_state == level_state.PLAY:
+		return
+
 	if not TurnManager.is_turn_active():
 		TurnManager.start_new_turn()
 	TurnManager.advance_turn()
 
-func _next_turn(continue_if_failed := false):
 	check_for_win()
-	
-	if not current_state == level_state.PLAY:
-		return
-	
-	if not TurnManager.is_turn_active():
-		TurnManager.start_new_turn()
-	
-	var turn_success := TurnManager.advance_turn()
-	
-	if not turn_success and continue_if_failed:
-		await get_tree().create_timer(GlobalVariables.TIME_STEP).timeout
-		_next_turn()
-	else:
-		timer.start()
+
 
 func _on_back_button_down():
 	if not level_select_scene_path.is_empty():
@@ -146,3 +131,21 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			state_transition_to(level_state.PLAY)
 	if event.is_action_pressed("r") and not event.is_echo():
 		SceneManager.reload_scene()
+	if event.is_action_pressed("back") and not event.is_echo():
+		back_action()
+	if event.is_action_pressed("forward") and not event.is_echo():
+		forward_action()
+	
+func back_action():
+	if current_state != level_state.PAUSE:
+		state_transition_to(level_state.PAUSE)
+	show_command_visualizers()
+	ActionHistory.undo_last_action()
+
+func forward_action():
+	if current_state != level_state.PAUSE:
+		state_transition_to(level_state.PAUSE)
+	show_command_visualizers()
+	if not TurnManager.is_turn_active():
+		TurnManager.start_new_turn()
+	TurnManager.advance_turn()

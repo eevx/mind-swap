@@ -11,6 +11,8 @@ var current_type : int = 0
 @export var command_sprite : Sprite2D
 @export var indicator_sprite : Sprite2D
 var _currently_indicated := false
+var _prev_mouse_pos := Vector2.ZERO
+var _tilt_amount : float = 0.
 
 func _ready():
 	_init_pos = position
@@ -25,11 +27,15 @@ func update_visual(type : int):
 	#$Label.text = $Label.text.replace("_", " ").capitalize()
 	pass
 
-func _process(_delta):
+func _process(delta):
 	if _clicked:
 		global_position = get_global_mouse_position() - _mouse_offset
+		var mouse_vel = (get_global_mouse_position() - _prev_mouse_pos) / delta
+		_tilt_amount = clamp(lerp(_tilt_amount, mouse_vel.x * 0.001, 0.1), -PI/6., PI/6.)
+		rotation = 0 + _tilt_amount
 	else:
 		set_indicator()
+	_prev_mouse_pos = get_global_mouse_position()
 
 func _on_turn_ended():
 	if _currently_indicated:
@@ -63,11 +69,14 @@ func _unhandled_input(event):
 			#var swap_action_2 : Action = SwapAction.new(swap_attempt.owner_data, temp_command_type, swap_attempt.index_in_array)
 			#TurnManager.execute_action(swap_action_1)
 			TurnManager.execute_action(swap_action)
+			bounce()
+			swap_attempt.bounce()
 		reset()
 
 func reset():
 	position = _init_pos
 	z_index = 2
+	rotation = 0
 
 func get_overlapping_clickable() -> ClickableModule:
 	var space_state = get_world_2d().direct_space_state
@@ -84,7 +93,8 @@ func get_overlapping_clickable() -> ClickableModule:
 func _on_input_event(_viewport, _event, _shape_idx):
 	if Input.is_action_just_pressed("left_click"):
 		if TurnManager.swaps_performed >= TurnManager.swaps_allowed:
-			SfxManager.play_sfx("error")
+			SfxManager.play_sfx("error", -5.)
+			LevelCamera.camera_shake(0.2)
 			return
 		SfxManager.play_sfx("hover", -7.)
 		_clicked = true
@@ -101,3 +111,8 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	update_visual(current_type)
 	scale = Vector2.ONE
+
+func bounce():
+	scale = Vector2.ONE * 0.5
+	var tween = create_tween()
+	tween.tween_property(self, "scale", Vector2.ONE, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)

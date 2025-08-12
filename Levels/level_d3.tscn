@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://bagmmgdicxavy"]
+[gd_scene load_steps=8 format=4 uid="uid://bagmmgdicxavy"]
 
 [ext_resource type="PackedScene" uid="uid://bdao5x87efl8" path="res://LevelComponents/level_manager.tscn" id="1_s65o0"]
 [ext_resource type="PackedScene" uid="uid://nvfa0p75xuke" path="res://LevelComponents/GridTileMap.tscn" id="2_j21pf"]
 [ext_resource type="PackedScene" uid="uid://cyy3whjrf3trl" path="res://LevelComponents/base_enemy.tscn" id="3_ielwo"]
 [ext_resource type="Script" uid="uid://bah1h38kcvyvw" path="res://GameObjectsAndData/CharacterObjectData.gd" id="4_gggog"]
 [ext_resource type="PackedScene" uid="uid://dvpa68x3mel0d" path="res://LevelComponents/moveable_box.tscn" id="5_j21pf"]
-[ext_resource type="FontFile" uid="uid://cb5ydtoqxovuo" path="res://Assets/Jersey10-Regular.ttf" id="6_ielwo"]
 
 [sub_resource type="Resource" id="Resource_j21pf"]
 script = ExtResource("4_gggog")
@@ -19,11 +18,6 @@ script = ExtResource("4_gggog")
 command_array = Array[int]([0, 1])
 current_dir = Vector2i(0, 1)
 metadata/_custom_type_script = "uid://bah1h38kcvyvw"
-
-[sub_resource type="LabelSettings" id="LabelSettings_gggog"]
-line_spacing = -7.385
-font = ExtResource("6_ielwo")
-font_size = 40
 
 [node name="level_d3" type="Node2D"]
 y_sort_enabled = true
@@ -49,16 +43,3 @@ EnemyData = SubResource("Resource_ielwo")
 
 [node name="MoveableBox" parent="." instance=ExtResource("5_j21pf")]
 position = Vector2(-96, -32)
-
-[node name="Label" type="Label" parent="."]
-offset_left = -720.0
-offset_top = -155.0
-offset_right = -313.0
-offset_bottom = 155.0
-text = "Pause to see commands.
-
-Swap commands to make them all disappear!
-
-Seek forward or backward with the buttons below!"
-label_settings = SubResource("LabelSettings_gggog")
-autowrap_mode = 2

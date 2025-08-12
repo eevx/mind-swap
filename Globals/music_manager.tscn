@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://xjmtkmsope2x"]
+
+[ext_resource type="Script" uid="uid://cxfpagyv2ncug" path="res://Globals/music_manager.gd" id="1_75ytp"]
+[ext_resource type="AudioStream" uid="uid://qvnxnj4yoxha" path="res://Assets/Music/theme3.wav" id="2_caoax"]
+[ext_resource type="AudioStream" uid="uid://bxm6oupujeuj7" path="res://Assets/Music/theme2.wav" id="3_hwxqs"]
+
+[node name="MusicManager" type="AudioStreamPlayer"]
+script = ExtResource("1_75ytp")
+_theme_dictionary = Dictionary[String, AudioStream]({
+"level theme": ExtResource("2_caoax"),
+"menu theme": ExtResource("3_hwxqs")
+})

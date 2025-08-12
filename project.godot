@@ -25,6 +25,7 @@ ActionHistory="*res://Globals/ActionHistory.gd"
 SfxManager="*res://Globals/SFXManager.tscn"
 LevelArray="*res://Globals/level_array.tscn"
 LevelCamera="*res://Globals/level_camera.tscn"
+MusicManager="*res://Globals/music_manager.tscn"
 
 [display]
 

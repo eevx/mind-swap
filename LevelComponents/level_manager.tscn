@@ -42,17 +42,14 @@ font_color = Color(1, 1, 0.827451, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b427q"]
 
-[node name="LevelManager" type="CanvasLayer" node_paths=PackedStringArray("timer", "swap_counter", "pause_play_button")]
+[node name="LevelManager" type="CanvasLayer" node_paths=PackedStringArray("swap_counter", "pause_play_button")]
 script = ExtResource("1_yi4t7")
-timer = NodePath("Timer")
 command_visualizer_scene = ExtResource("2_lnmxl")
 level_select_scene_path = "res://Levels/level_select.tscn"
 swap_counter = NodePath("Label")
 pause_texture = ExtResource("3_clcsk")
 play_texture = ExtResource("4_1r3jd")
 pause_play_button = NodePath("HBoxContainer/pause_play")
-
-[node name="Timer" type="Timer" parent="."]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = 48.0

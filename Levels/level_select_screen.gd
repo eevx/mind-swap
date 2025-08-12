@@ -1,6 +1,7 @@
 extends GridContainer
 
 func _ready():
+	MusicManager.play_theme("menu theme")
 	var i := 0
 	for child in get_children():
 		if child is LevelSelectButton:
