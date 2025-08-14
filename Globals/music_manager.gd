@@ -33,4 +33,5 @@ func switch_track(track : AudioStream, volume := 0.):
 	if stream == track:
 		return
 	stream = track
+	volume_db = volume
 	set_playing(true)
