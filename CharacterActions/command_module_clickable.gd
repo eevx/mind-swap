@@ -41,7 +41,9 @@ func _on_turn_ended():
 	if _currently_indicated:
 		var flash_tween = create_tween()
 		flash_tween.tween_property(self, "modulate", Color(2, 2, 2), 0.1)
-		flash_tween.tween_property(self, "modulate", Color(1, 1, 1), 0.1)
+		flash_tween.set_parallel(true).tween_property(self, "scale", Vector2.ONE * 1.1, 0.1)
+		flash_tween.set_parallel(false).tween_property(self, "modulate", Color(1, 1, 1), 0.1)
+		flash_tween.set_parallel(true).tween_property(self, "scale", Vector2.ONE, 0.1)
 
 func set_indicator():
 	if not indicator_sprite:

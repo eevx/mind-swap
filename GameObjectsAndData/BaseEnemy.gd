@@ -9,6 +9,16 @@ class_name BaseEnemy
 
 var animation_tween : Tween
 
+func _ready():
+	super()
+	MusicManager.beat.connect(_on_beat)
+
+func _on_beat():
+	scale = Vector2.ONE * 1.1
+	var tween = create_tween()
+	tween.tween_property(self, "scale", Vector2.ONE, GlobalVariables.ANIMATION_TIME_STEP)
+
+
 func _process(_delta: float) -> void:
 	set_indicator()
 

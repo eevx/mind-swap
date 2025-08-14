@@ -19,10 +19,21 @@ command_array = Array[int]([4, 4])
 current_dir = Vector2i(0, 1)
 metadata/_custom_type_script = "uid://bah1h38kcvyvw"
 
-[sub_resource type="LabelSettings" id="LabelSettings_wnc21"]
-line_spacing = -7.385
-font = ExtResource("5_6xcu2")
-font_size = 40
+[sub_resource type="GDScript" id="GDScript_6xcu2"]
+resource_name = "pulse_label"
+script/source = "extends RichTextLabel
+
+var _init_position : Vector2
+
+func _ready():
+	_init_position = position
+	MusicManager.beat.connect(_on_beat)
+
+func _on_beat():
+	position = _init_position + Vector2.UP * 5.
+	var tween = create_tween()
+	tween.tween_property(self, \"position\", _init_position, GlobalVariables.ANIMATION_TIME_STEP)
+"
 
 [node name="level_d1" type="Node2D"]
 y_sort_enabled = true
@@ -46,20 +57,6 @@ EnemyData = SubResource("Resource_wnc21")
 position = Vector2(32, -96)
 EnemyData = SubResource("Resource_lic31")
 
-[node name="Label" type="Label" parent="."]
-visible = false
-offset_left = -720.0
-offset_top = -155.0
-offset_right = -313.0
-offset_bottom = 155.0
-text = "Pause to see commands.
-
-Swap commands to make them all disappear!
-
-Seek forward or backward with the buttons below!"
-label_settings = SubResource("LabelSettings_wnc21")
-autowrap_mode = 2
-
 [node name="Label2" type="RichTextLabel" parent="."]
 offset_left = -704.0
 offset_top = -128.0
@@ -68,10 +65,11 @@ offset_bottom = 192.0
 theme_override_fonts/normal_font = ExtResource("5_6xcu2")
 theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
-text = "[wave]Pause to see commands.
+text = "Pause to see commands.
 
 Swap commands (click and drag) to exterminate them all!
 
 Seek forward or backward with the buttons below!"
 scroll_active = false
 autowrap_mode = 2
+script = SubResource("GDScript_6xcu2")

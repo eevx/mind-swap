@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c3qd4m6h3svux" path="res://CharacterActions/command_module_clickable.tscn" id="2_sb6m3"]
 
 [sub_resource type="Curve" id="Curve_sb6m3"]
-_data = [Vector2(0, 0.20291972), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.20291972), 0.0, 0.0, 0, 0, Vector2(1, 0.23370326), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="CommandVisualizer" type="Node2D" node_paths=PackedStringArray("line")]
