@@ -23,6 +23,7 @@ func deferred_goto_scene(file_path : String, is_transition := true):
 		return
 	
 	_transition_active = true
+	MusicManager.pause_theme()
 	
 	if is_transition:
 		var transition := add_transition(1)

@@ -5,7 +5,6 @@ extends AudioStreamPlayer
 var _set_volume := 0.
 var _beat_interval : float = 0.5
 var _last_beat_index := 0
-var _switch_tween : Tween
 
 signal beat
 
@@ -23,7 +22,7 @@ func play_theme(theme_name : String = "level theme", volume := 0.):
 		switch_track(_theme_dictionary[theme_name], volume)
 		_set_volume = volume
 		
-func pause_theme(pause_volume := -10.):
+func pause_theme(pause_volume := -20.):
 	volume_db = pause_volume
 
 func resume_theme():
@@ -31,7 +30,21 @@ func resume_theme():
 
 func switch_track(track : AudioStream, volume := 0.):
 	if stream == track:
+		_set_volume = volume
+		volume_db = volume
 		return
 	stream = track
 	volume_db = volume
 	set_playing(true)
+
+func get_current_loudness() -> float:
+	var bus_index = AudioServer.get_bus_index("Music")
+	if bus_index == -1:
+		return 0.0 
+
+	var effect_instance = AudioServer.get_bus_effect_instance(bus_index, 0)
+	if effect_instance == null:
+		return 0.0 
+
+	var rms = effect_instance.get_magnitude_for_frequency_range(20.0, 20000.0).length()
+	return rms

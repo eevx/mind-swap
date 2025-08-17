@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://bxm6oupujeuj7" path="res://Assets/Music/theme2.wav" id="3_hwxqs"]
 
 [node name="MusicManager" type="AudioStreamPlayer"]
+bus = &"Music"
 script = ExtResource("1_75ytp")
 _theme_dictionary = Dictionary[String, AudioStream]({
 "level theme": ExtResource("2_caoax"),

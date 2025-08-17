@@ -36,17 +36,17 @@ shader_parameter/star_texture = SubResource("NoiseTexture2D_ud7fb")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bf7pi"]
 shader = ExtResource("3_h4nxi")
 shader_parameter/resolution = Vector2(800, 450)
-shader_parameter/scan_line_amount = 0.5630000267425
-shader_parameter/warp_amount = 0.050000002375000005
-shader_parameter/noise_amount = 0.0
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.20000000950000002
+shader_parameter/noise_amount = 0.046000002185
 shader_parameter/interference_amount = 0.2
 shader_parameter/grille_amount = 0.0750000035625
-shader_parameter/grille_size = 1.0
-shader_parameter/vignette_amount = 0.6
-shader_parameter/vignette_intensity = 0.18800000893000002
+shader_parameter/grille_size = 3.13600010146
+shader_parameter/vignette_amount = 0.7450000353875
+shader_parameter/vignette_intensity = 0.18800000893
 shader_parameter/aberation_amount = 0.5
 shader_parameter/roll_line_amount = 0.0630000029925
-shader_parameter/roll_speed = 3.800000012432747e-07
+shader_parameter/roll_speed = 1.0
 shader_parameter/scan_line_strength = -8.0
 shader_parameter/pixel_strength = -2.0
 

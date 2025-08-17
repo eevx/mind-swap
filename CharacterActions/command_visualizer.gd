@@ -30,7 +30,10 @@ func _process(_delta):
 	
 	if ref_to_data.command_array.size() == 0:
 		disable()
-
+	
+	if GridManager.get_object_grid_pos(ref_to_data) == null:
+		disable()
+	
 	#var clock_position = (Vector2.UP * get_window().get_visible_rect().size.y / 3.).rotated((ref_to_data.turn_order + 1) * PI/2.)
 	#global_position = clock_position
 	#line.set_point_position(0, line.to_local(ref_to_data.ref_to_node.global_position))
@@ -58,7 +61,7 @@ func enable():
 func disable():
 	#visible = false
 	line.hide()
-	modulate = Color(1, 1, 1, 0.4)
+	modulate = Color(.4, .4, .4, 1)
 	for child in get_children():
 		if child is ClickableModule:
 			child.collision_layer = 0
